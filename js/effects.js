@@ -40,20 +40,38 @@
   function initOceanCanvas() {
     const canvas = $('#ocean-canvas');
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
-    let w = 0, h = 0, dpr = 1, t = 0, running = false, rafId = 0;
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const saveData = !!(conn && conn.saveData);
+    const isNarrow = window.matchMedia('(max-width: 900px)').matches;
+    const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+    // Skip canvas entirely on mobile / save-data — main-thread + GPU cost in PSI
+    if (saveData || isNarrow || isCoarse || reducedMotion) {
+      canvas.style.display = 'none';
+      return;
+    }
 
-    const sparks = Array.from({ length: 42 }, () => ({
+    let w = 0, h = 0, dpr = 1, t = 0, running = false, rafId = 0;
+    // Fewer particles + lower DPR on mobile = less main-thread & GPU work
+    const mobileLite = isNarrow || window.matchMedia('(pointer: coarse)').matches;
+    const sparkCount = mobileLite ? 14 : 42;
+    const stepX = mobileLite ? 12 : 6;
+    const maxDpr = mobileLite ? 1 : 2;
+    let lastFrame = 0;
+    const minFrameMs = mobileLite ? 1000 / 24 : 0; // ~24fps on phones
+
+    const sparks = Array.from({ length: sparkCount }, () => ({
       x: Math.random(), y: 0.55 + Math.random() * 0.4,
       r: 0.6 + Math.random() * 1.6, p: Math.random() * Math.PI * 2,
       s: 0.4 + Math.random() * 0.8,
     }));
 
     function resize() {
-      dpr = Math.min(2, window.devicePixelRatio || 1);
+      dpr = Math.min(maxDpr, window.devicePixelRatio || 1);
       w = canvas.clientWidth; h = canvas.clientHeight;
+      if (!w || !h) return;
       canvas.width = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -63,7 +81,7 @@
     function wave(baseY, amp, len, speed, color) {
       ctx.beginPath();
       ctx.moveTo(0, h);
-      for (let x = 0; x <= w; x += 6) {
+      for (let x = 0; x <= w; x += stepX) {
         const y = baseY
           + Math.sin((x / len) + t * speed) * amp
           + Math.sin((x / (len * 0.53)) - t * speed * 1.4) * amp * 0.45;
@@ -75,7 +93,13 @@
       ctx.fill();
     }
 
-    function frame() {
+    function frame(now) {
+      if (minFrameMs && now - lastFrame < minFrameMs) {
+        if (running) rafId = requestAnimationFrame(frame);
+        return;
+      }
+      lastFrame = now || 0;
+
       const dark = document.documentElement.classList.contains('dark');
       ctx.clearRect(0, 0, w, h);
 
@@ -87,7 +111,9 @@
 
       wave(horizon + h * 0.06, h * 0.012, 240, 0.5, tints[0]);
       wave(horizon + h * 0.14, h * 0.018, 190, 0.75, tints[1]);
-      wave(horizon + h * 0.24, h * 0.026, 150, 1.05, tints[2]);
+      if (!mobileLite) {
+        wave(horizon + h * 0.24, h * 0.026, 150, 1.05, tints[2]);
+      }
 
       // Glitter path (sun/moon reflection on the water)
       const gx = w * 0.5;
@@ -104,7 +130,7 @@
         ctx.fill();
       }
 
-      t += 0.016;
+      t += mobileLite ? 0.022 : 0.016;
       if (running) rafId = requestAnimationFrame(frame);
     }
 
@@ -112,9 +138,9 @@
     function stop() { running = false; cancelAnimationFrame(rafId); }
 
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
 
-    if (reducedMotion) { frame(); return; } // single static frame
+    if (reducedMotion) { frame(0); return; } // single static frame
 
     // Only animate while the hero is on screen and the tab is visible.
     new IntersectionObserver((e) => (e[0].isIntersecting ? start() : stop()), { threshold: 0.02 })

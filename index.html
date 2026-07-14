@@ -10,8 +10,7 @@
   <meta name="description" content="Coastline Condos - premium 3-story ocean-view condominiums one block from the beach in Playas, Ecuador. Private terraces, courtyard pool, and modern coastal luxury. Register for VIP access." />
   <meta name="keywords" content="Coastline Condos, Playas Ecuador, ocean view condo, beach condominium, luxury real estate Ecuador, Pacific Ocean homes" />
   <meta name="author" content="Coastline Condos" />
-  <!-- Preview build: keep out of Google until public launch -->
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://coastlinecondos.ec/" />
 
   <!-- Open Graph -->
@@ -38,87 +37,36 @@
   <!-- PWA -->
   <link rel="manifest" href="manifest.webmanifest" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <!-- LCP: hero poster loads at highest priority -->
-  <link rel="preload" as="image" href="assets/images/hero-poster.jpg" fetchpriority="high" />
+  <!-- LCP: responsive hero poster (WebP preferred) -->
+  <link
+    rel="preload"
+    as="image"
+    type="image/webp"
+    href="assets/images/hero-poster-w768.webp"
+    imagesrcset="assets/images/hero-poster-w480.webp 480w, assets/images/hero-poster-w768.webp 768w, assets/images/hero-poster-w1200.webp 1200w, assets/images/hero-poster-w1600.webp 1600w"
+    imagesizes="100vw"
+    fetchpriority="high"
+  />
 
-  <!-- Fonts: Playfair Display (headings/wordmark) + Poppins (body/UI) -->
+  <!-- Critical CSS inlined (no render-blocking) — full design system loads async -->
+  <style id="critical-css">*,*:before,*:after{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:5rem}body{margin:0;font-family:Poppins,system-ui,sans-serif;background:#fbf6ec;color:#1e4e4e;overflow-x:hidden;-webkit-font-smoothing:antialiased}img{max-width:100%;height:auto;display:block}.skip-link{position:absolute;left:1rem;top:-100%;z-index:100;padding:.75rem 1.25rem;background:#b25e3e;color:#fbf6ec;font-weight:600;border-radius:.25rem}.skip-link:focus{top:1rem}#scroll-progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:60;background:linear-gradient(90deg,#c9714f,#a8792f);transform:scaleX(0);transform-origin:left;pointer-events:none}.site-header{position:fixed;top:0;left:0;right:0;z-index:50;color:#fff;padding-top:env(safe-area-inset-top)}.logo-img{height:3.1rem;width:auto;display:block}.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}.hero-media,.hero-poster,.hero-fallback{position:absolute;inset:0}.hero-poster img,.hero-media video{width:100%;height:100%;object-fit:cover}.hero-fallback{background:linear-gradient(160deg,#1e4e4e,#2a6868 40%,#2f7070,#1e4e4e);z-index:0}.hero-copy{position:relative;z-index:10;max-width:42rem;margin:0 auto;padding:5rem 1rem 6rem;text-align:center;color:#fff}.hero-title{font-family:Playfair Display,Georgia,serif;font-size:clamp(2.15rem,9.5vw,6rem);font-weight:500;line-height:1.05;margin:0 0 1.5rem;word-wrap:break-word}.hero .text-champagne-light,.text-champagne-light{color:#e39a7b}.btn-primary{display:inline-flex;align-items:center;justify-content:center;padding:.85rem 1.5rem;border-radius:9999px;background:linear-gradient(135deg,#b25e3e,#a0522f);color:#fbf6ec;font-weight:600;font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:none;min-height:2.85rem}.btn-outline{display:inline-flex;align-items:center;justify-content:center;padding:.85rem 1.5rem;border-radius:9999px;border:1px solid rgba(255,255,255,.45);color:#fff;font-weight:600;font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;background:transparent;min-height:2.85rem}.hidden{display:none!important}.flex{display:flex}.relative{position:relative}.absolute{position:absolute}.fixed{position:fixed}.inset-0{inset:0}.w-full{width:100%}.h-full{height:100%}.object-cover{object-fit:cover}.mx-auto{margin-left:auto;margin-right:auto}.px-4{padding-left:1rem;padding-right:1rem}.text-center{text-align:center}.text-white{color:#fff}.overflow-hidden{overflow:hidden}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.flex-col{flex-direction:column}.gap-4{gap:1rem}.font-display{font-family:Playfair Display,Georgia,serif}.font-medium{font-weight:500}.font-light{font-weight:300}.uppercase{text-transform:uppercase}.tracking-wide{letter-spacing:.025em}.leading-relaxed{line-height:1.625}.max-w-5xl{max-width:64rem}.max-w-7xl{max-width:80rem}.max-w-2xl{max-width:42rem}.z-10{z-index:10}.z-50{z-index:50}.min-h-screen{min-height:100vh;min-height:100svh}.pt-20{padding-top:5rem}.mb-6{margin-bottom:1.5rem}.mb-10{margin-bottom:2.5rem}.mt-6{margin-top:1.5rem}.mt-10{margin-top:2.5rem}.text-xs{font-size:.75rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.bg-sand-50{background-color:#fbf6ec}.text-ocean-950{color:#1e4e4e}.bg-gradient-to-b{background-image:linear-gradient(to bottom,var(--tw-gradient-stops))}.from-ocean-950\/70{--tw-gradient-from:rgba(30,78,78,.7);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to,rgba(30,78,78,0))}.via-ocean-950\/40{--tw-gradient-stops:var(--tw-gradient-from),rgba(30,78,78,.4),var(--tw-gradient-to,rgba(30,78,78,0))}.to-ocean-950\/80{--tw-gradient-to:rgba(30,78,78,.8)}.reveal{opacity:1;transform:none}@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-sm{font-size:.875rem}.sm\:text-xl{font-size:1.25rem}.sm\:flex-row{flex-direction:row}.sm\:inline-flex{display:inline-flex!important}}@media(min-width:768px){.md\:h-20{height:5rem}.md\:inline-flex{display:inline-flex!important}.md\:hidden{display:none!important}.logo-img{height:4rem}}@media(min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}.lg\:flex{display:flex!important}.lg\:hidden{display:none!important}}</style>
+
+  <!-- Full CSS async (media=print swap) — kills render-blocking CSS audit -->
+  <link rel="stylesheet" href="css/site.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="css/site.min.css" /></noscript>
+
+  <!-- Fonts: non-blocking, after first paint -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            /* "ocean" is now the brand teal scale (teal-ink #1E4E4E at 950) */
-            ocean: {
-              50: '#f2f8f7',
-              100: '#dfeeed',
-              200: '#bedddb',
-              300: '#93c7c4',
-              400: '#6fb3b0',
-              500: '#4a9797',
-              600: '#3c8585',
-              700: '#357878',
-              800: '#2f6b6b',
-              900: '#2A6868',
-              950: '#1E4E4E',
-            },
-            /* "sand" is now the brand cream scale (#FBF6EC at 50) */
-            sand: {
-              50: '#FBF6EC',
-              100: '#f6eedd',
-              200: '#ede0c6',
-              300: '#e2d0ac',
-              400: '#d4ba8a',
-              500: '#c4a46e',
-              600: '#b08d5a',
-            },
-            /* "champagne" is now the brand terracotta accent */
-            champagne: {
-              DEFAULT: '#C9714F',
-              light: '#E39A7B',
-              dark: '#A85A3B',
-            },
-            gold: '#A8792F',
-            palm: {
-              DEFAULT: '#3E7A5C',
-              light: '#8FC49A',
-            },
-          },
-          fontFamily: {
-            sans: ['Poppins', 'Montserrat', 'system-ui', 'sans-serif'],
-            display: ['Playfair Display', 'Georgia', 'serif'],
-          },
-          animation: {
-            'fade-up': 'fadeUp 0.8s ease-out forwards',
-            'float': 'float 6s ease-in-out infinite',
-            'wave': 'wave 8s ease-in-out infinite',
-          },
-          keyframes: {
-            fadeUp: {
-              '0%': { opacity: '0', transform: 'translateY(30px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-12px)' },
-            },
-            wave: {
-              '0%, 100%': { transform: 'translateX(0)' },
-              '50%': { transform: 'translateX(-20px)' },
-            },
-          },
-        },
-      },
-    };
-  </script>
-
-  <link rel="stylesheet" href="css/styles.css" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@400;500;600&display=swap"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@400;500;600&display=swap" />
+  </noscript>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -145,20 +93,6 @@
     ]
   }
   </script>
-
-  <script>
-    window.addEventListener('load', function () {
-      var p = document.getElementById('preloader');
-      if (p) { p.classList.add('is-done'); setTimeout(function () { p.setAttribute('hidden', ''); }, 800); }
-    });
-    setTimeout(function () {
-      var p = document.getElementById('preloader');
-      if (p && !p.classList.contains('is-done')) {
-        p.classList.add('is-done');
-        p.setAttribute('hidden', '');
-      }
-    }, 2500);
-  </script>
 </head>
 <body class="font-sans bg-sand-50 text-ocean-950 antialiased dark:bg-ocean-950 dark:text-sand-50 transition-colors duration-500">
 
@@ -167,14 +101,6 @@
 
   <!-- Reading progress (thin champagne line at the very top) -->
   <div id="scroll-progress" aria-hidden="true"></div>
-
-  <!-- ========== PRELOADER ========== -->
-  <div id="preloader" class="preloader" aria-hidden="true">
-    <div class="preloader-inner">
-      <img class="preloader-logo" src="assets/brand/coastline-logo-stacked-reversed.svg" alt="" width="300" height="300" />
-      <div class="preloader-wave"></div>
-    </div>
-  </div>
 
   <!-- ========== HEADER / NAV ========== -->
   <header id="site-header" class="site-header fixed top-0 left-0 right-0 z-50 transition-all duration-500">
@@ -262,43 +188,59 @@
 
     <!-- ========== HERO ========== -->
     <section id="home" class="hero relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Hero">
-      <!-- Video / image background -->
+      <!-- Video / image background — poster first; video sources injected by main.js -->
       <div class="hero-media absolute inset-0" data-parallax="0.3">
+        <picture class="hero-poster absolute inset-0">
+          <source
+            type="image/webp"
+            srcset="assets/images/hero-poster-w480.webp 480w, assets/images/hero-poster-w768.webp 768w, assets/images/hero-poster-w1200.webp 1200w, assets/images/hero-poster-w1600.webp 1600w"
+            sizes="100vw"
+          />
+          <img
+            src="assets/images/hero-poster-w768.jpg"
+            srcset="assets/images/hero-poster-w480.jpg 480w, assets/images/hero-poster-w768.jpg 768w, assets/images/hero-poster-w1200.jpg 1200w, assets/images/hero-poster-w1600.jpg 1600w"
+            sizes="100vw"
+            alt=""
+            width="1920"
+            height="1080"
+            class="absolute inset-0 w-full h-full object-cover"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <video
           id="hero-video"
           class="absolute inset-0 w-full h-full object-cover"
-          autoplay muted loop playsinline poster="assets/images/hero-poster.jpg"
+          muted loop playsinline preload="none"
           aria-hidden="true"
-        >
-          <source src="assets/videos/ocean-hero.mp4" type="video/mp4" />
-        </video>
-        <!-- Fallback gradient when video missing -->
+        ></video>
+        <!-- Fallback gradient when media missing -->
         <div class="hero-fallback absolute inset-0" aria-hidden="true"></div>
-        <!-- Living ocean: procedural waves + light glitter (js/effects.js) -->
+        <!-- Living ocean: procedural waves + light glitter (js/effects.js) — desktop / reduced on mobile -->
         <canvas id="ocean-canvas" class="absolute inset-0 w-full h-full" aria-hidden="true"></canvas>
         <div class="absolute inset-0 bg-gradient-to-b from-ocean-950/70 via-ocean-950/40 to-ocean-950/80"></div>
         <div class="absolute inset-0 hero-shimmer" aria-hidden="true"></div>
       </div>
 
-      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center text-white pt-20">
-        <p class="reveal text-champagne-light tracking-[0.35em] uppercase text-xs sm:text-sm font-medium mb-6" data-i18n="hero.eyebrow">
+      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center text-white pt-20 pb-24 hero-copy">
+        <p class="reveal is-visible text-champagne-light tracking-[0.35em] uppercase text-xs sm:text-sm font-medium mb-6" data-i18n="hero.eyebrow">
           Playas, Ecuador · Km 5 Vía Data · Vista al Mar
         </p>
-        <h1 class="reveal reveal-delay-1 font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium leading-[1.05] mb-6">
+        <h1 class="reveal is-visible reveal-delay-1 font-display hero-title font-medium leading-[1.05] mb-6">
           <span data-i18n="hero.title1">Live Where the Ocean</span><br />
           <span class="italic text-champagne-light" data-i18n="hero.title2">Meets Elegance</span>
         </h1>
-        <p class="reveal reveal-delay-2 text-lg sm:text-xl text-white/85 max-w-2xl mx-auto mb-10 font-light leading-relaxed" data-i18n="hero.subtitle">
+        <p class="reveal is-visible reveal-delay-2 text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-10 font-light leading-relaxed" data-i18n="hero.subtitle">
           A boutique 3-story ocean-view condominium development. Private balconies, panoramic Pacific vistas, and elevated coastal living.
         </p>
-        <div class="reveal reveal-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div class="reveal is-visible reveal-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a href="#contact" class="btn-primary btn-lg" data-i18n="hero.cta1">Register for VIP Access</a>
           <a href="#residences" class="btn-outline btn-lg" data-i18n="hero.cta2">View Floor Plans</a>
         </div>
-        <button type="button" class="reveal reveal-delay-4 quiz-link mt-6" data-quiz-open>
+        <button type="button" class="reveal is-visible reveal-delay-4 quiz-link mt-6" data-quiz-open>
           ✦ <span data-i18n="quiz.open">Find Your Perfect Unit</span>
         </button>
-        <p class="reveal reveal-delay-4 mt-10 text-sm text-white/60 tracking-wide" data-i18n="hero.tagline">
+        <p class="reveal is-visible reveal-delay-4 mt-10 text-sm hero-tagline tracking-wide" data-i18n="hero.tagline">
           Oceanfront Living, Elevated.
         </p>
       </div>
@@ -354,13 +296,22 @@
           <div class="reveal reveal-delay-2 relative">
             <div class="lifestyle-grid">
               <figure class="lifestyle-main img-placeholder has-image" data-label="Playas beach">
-                <img src="assets/images/lifestyle-balcony.jpg" alt="Beach at Playas (General Villamil), Ecuador — open Pacific horizon" loading="lazy" class="w-full h-full object-cover" onerror="this.parentElement.classList.remove('has-image'); this.style.display='none'" />
+                <picture>
+                  <source type="image/webp" srcset="assets/images/lifestyle-balcony-w480.webp 480w, assets/images/lifestyle-balcony-w768.webp 768w, assets/images/lifestyle-balcony-w1200.webp 1200w" sizes="(max-width: 1023px) 100vw, 50vw" />
+                  <img src="assets/images/lifestyle-balcony-w768.jpg" srcset="assets/images/lifestyle-balcony-w480.jpg 480w, assets/images/lifestyle-balcony-w768.jpg 768w, assets/images/lifestyle-balcony-w1200.jpg 1200w" sizes="(max-width: 1023px) 100vw, 50vw" width="1920" height="1262" alt="Beach at Playas (General Villamil), Ecuador — open Pacific horizon" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.parentElement.parentElement.classList.remove('has-image'); this.style.display='none'" />
+                </picture>
               </figure>
               <figure class="lifestyle-side img-placeholder has-image" data-label="Engabao coast">
-                <img src="assets/images/lifestyle-beach.jpg" alt="Coastal beach near Engabao, Playas canton, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.parentElement.classList.remove('has-image'); this.style.display='none'" />
+                <picture>
+                  <source type="image/webp" srcset="assets/images/lifestyle-beach-w480.webp 480w, assets/images/lifestyle-beach-w768.webp 768w, assets/images/lifestyle-beach-w1200.webp 1200w" sizes="(max-width: 1023px) 50vw, 25vw" />
+                  <img src="assets/images/lifestyle-beach-w480.jpg" srcset="assets/images/lifestyle-beach-w480.jpg 480w, assets/images/lifestyle-beach-w768.jpg 768w" sizes="(max-width: 1023px) 50vw, 25vw" width="1920" height="1088" alt="Coastal beach near Engabao, Playas canton, Ecuador" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.parentElement.parentElement.classList.remove('has-image'); this.style.display='none'" />
+                </picture>
               </figure>
               <figure class="lifestyle-side img-placeholder has-image" data-label="Malecón Playas">
-                <img src="assets/images/lifestyle-interior.jpg" alt="Malecón boardwalk in Playas, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.parentElement.classList.remove('has-image'); this.style.display='none'" />
+                <picture>
+                  <source type="image/webp" srcset="assets/images/lifestyle-interior-w480.webp 480w, assets/images/lifestyle-interior-w768.webp 768w, assets/images/lifestyle-interior-w1200.webp 1200w" sizes="(max-width: 1023px) 50vw, 25vw" />
+                  <img src="assets/images/lifestyle-interior-w480.jpg" srcset="assets/images/lifestyle-interior-w480.jpg 480w, assets/images/lifestyle-interior-w768.jpg 768w" sizes="(max-width: 1023px) 50vw, 25vw" width="1920" height="1080" alt="Malecón boardwalk in Playas, Ecuador" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.parentElement.parentElement.classList.remove('has-image'); this.style.display='none'" />
+                </picture>
               </figure>
             </div>
           </div>
@@ -685,10 +636,16 @@
             </div>
             <div class="grid grid-cols-2 gap-4">
               <figure class="img-placeholder rounded-xl overflow-hidden aspect-[4/3]" data-label="Playas beach">
-                <img src="assets/images/playas-beach.jpg" alt="Pacific beach at Playas (General Villamil), Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+                <picture>
+                  <source type="image/webp" srcset="assets/images/playas-beach-w480.webp 480w, assets/images/playas-beach-w768.webp 768w" sizes="(max-width: 640px) 45vw, 280px" />
+                  <img src="assets/images/playas-beach-w480.jpg" srcset="assets/images/playas-beach-w480.jpg 480w, assets/images/playas-beach-w768.jpg 768w" sizes="(max-width: 640px) 45vw, 280px" width="1920" height="1440" alt="Pacific beach at Playas (General Villamil), Ecuador" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+                </picture>
               </figure>
               <figure class="img-placeholder rounded-xl overflow-hidden aspect-[4/3]" data-label="Local dining">
-                <img src="assets/images/playas-dining.jpg" alt="Local restaurant on the coast in Playas, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+                <picture>
+                  <source type="image/webp" srcset="assets/images/playas-dining-w480.webp 480w, assets/images/playas-dining-w768.webp 768w" sizes="(max-width: 640px) 45vw, 280px" />
+                  <img src="assets/images/playas-dining-w480.jpg" srcset="assets/images/playas-dining-w480.jpg 480w, assets/images/playas-dining-w768.jpg 768w" sizes="(max-width: 640px) 45vw, 280px" width="1920" height="1080" alt="Local restaurant on the coast in Playas, Ecuador" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+                </picture>
               </figure>
             </div>
           </div>
@@ -712,34 +669,52 @@
 
         <!-- Masonry-style gallery — real Playas / Engabao photos (see assets/images/playas/CREDITS.md) -->
         <div class="gallery-masonry" id="gallery-grid">
-          <button type="button" class="gallery-item tall reveal" data-src="assets/images/gallery-01.jpg" data-alt="Coastal landscape near Engabao, Playas canton, Ecuador" aria-label="Open gallery image 1">
+          <button type="button" class="gallery-item tall reveal" data-src="assets/images/gallery-01.webp" data-alt="Coastal landscape near Engabao, Playas canton, Ecuador" aria-label="Open gallery image 1">
             <span class="img-placeholder absolute inset-0" data-label="Engabao coast">
-              <img src="assets/images/gallery-01.jpg" alt="Coastal landscape near Engabao, Playas canton, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              <picture>
+                <source type="image/webp" srcset="assets/images/gallery-01-w480.webp 480w, assets/images/gallery-01-w768.webp 768w, assets/images/gallery-01-w1200.webp 1200w" sizes="(max-width: 640px) 100vw, 33vw" />
+                <img src="assets/images/gallery-01-w480.jpg" srcset="assets/images/gallery-01-w480.jpg 480w, assets/images/gallery-01-w768.jpg 768w" sizes="(max-width: 640px) 100vw, 33vw" width="1920" height="1440" alt="Coastal landscape near Engabao, Playas canton, Ecuador" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              </picture>
             </span>
           </button>
-          <button type="button" class="gallery-item reveal reveal-delay-1" data-src="assets/images/gallery-02.jpg" data-alt="Malecón boardwalk in Playas, Ecuador" aria-label="Open gallery image 2">
+          <button type="button" class="gallery-item reveal reveal-delay-1" data-src="assets/images/gallery-02.webp" data-alt="Malecón boardwalk in Playas, Ecuador" aria-label="Open gallery image 2">
             <span class="img-placeholder absolute inset-0" data-label="Malecón">
-              <img src="assets/images/gallery-02.jpg" alt="Malecón boardwalk in Playas, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              <picture>
+                <source type="image/webp" srcset="assets/images/gallery-02-w480.webp 480w, assets/images/gallery-02-w768.webp 768w, assets/images/gallery-02-w1200.webp 1200w" sizes="(max-width: 640px) 100vw, 33vw" />
+                <img src="assets/images/gallery-02-w480.jpg" srcset="assets/images/gallery-02-w480.jpg 480w, assets/images/gallery-02-w768.jpg 768w" sizes="(max-width: 640px) 100vw, 33vw" width="1920" height="889" alt="Malecón boardwalk in Playas, Ecuador" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              </picture>
             </span>
           </button>
-          <button type="button" class="gallery-item reveal reveal-delay-2" data-src="assets/images/gallery-03.jpg" data-alt="Municipal market in Playas, Ecuador" aria-label="Open gallery image 3">
+          <button type="button" class="gallery-item reveal reveal-delay-2" data-src="assets/images/gallery-03.webp" data-alt="Municipal market in Playas, Ecuador" aria-label="Open gallery image 3">
             <span class="img-placeholder absolute inset-0" data-label="Market">
-              <img src="assets/images/gallery-03.jpg" alt="Municipal market in Playas, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              <picture>
+                <source type="image/webp" srcset="assets/images/gallery-03-w480.webp 480w, assets/images/gallery-03-w768.webp 768w, assets/images/gallery-03-w1200.webp 1200w" sizes="(max-width: 640px) 100vw, 33vw" />
+                <img src="assets/images/gallery-03-w480.jpg" srcset="assets/images/gallery-03-w480.jpg 480w, assets/images/gallery-03-w768.jpg 768w" sizes="(max-width: 640px) 100vw, 33vw" width="1920" height="972" alt="Municipal market in Playas, Ecuador" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              </picture>
             </span>
           </button>
-          <button type="button" class="gallery-item tall reveal" data-src="assets/images/gallery-04.jpg" data-alt="Beach at Engabao, Playas canton, Ecuador" aria-label="Open gallery image 4">
+          <button type="button" class="gallery-item tall reveal" data-src="assets/images/gallery-04.webp" data-alt="Beach at Engabao, Playas canton, Ecuador" aria-label="Open gallery image 4">
             <span class="img-placeholder absolute inset-0" data-label="Engabao beach">
-              <img src="assets/images/gallery-04.jpg" alt="Beach at Engabao, Playas canton, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              <picture>
+                <source type="image/webp" srcset="assets/images/gallery-04-w480.webp 480w, assets/images/gallery-04-w768.webp 768w, assets/images/gallery-04-w1200.webp 1200w" sizes="(max-width: 640px) 100vw, 33vw" />
+                <img src="assets/images/gallery-04-w480.jpg" srcset="assets/images/gallery-04-w480.jpg 480w, assets/images/gallery-04-w768.jpg 768w" sizes="(max-width: 640px) 100vw, 33vw" width="1920" height="1080" alt="Beach at Engabao, Playas canton, Ecuador" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              </picture>
             </span>
           </button>
-          <button type="button" class="gallery-item reveal reveal-delay-1" data-src="assets/images/gallery-05.jpg" data-alt="Central plaza in Playas, Ecuador" aria-label="Open gallery image 5">
+          <button type="button" class="gallery-item reveal reveal-delay-1" data-src="assets/images/gallery-05.webp" data-alt="Central plaza in Playas, Ecuador" aria-label="Open gallery image 5">
             <span class="img-placeholder absolute inset-0" data-label="Plaza">
-              <img src="assets/images/gallery-05.jpg" alt="Central plaza in Playas, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              <picture>
+                <source type="image/webp" srcset="assets/images/gallery-05-w480.webp 480w, assets/images/gallery-05-w768.webp 768w, assets/images/gallery-05-w1200.webp 1200w" sizes="(max-width: 640px) 100vw, 33vw" />
+                <img src="assets/images/gallery-05-w480.jpg" srcset="assets/images/gallery-05-w480.jpg 480w, assets/images/gallery-05-w768.jpg 768w" sizes="(max-width: 640px) 100vw, 33vw" width="1920" height="1080" alt="Central plaza in Playas, Ecuador" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              </picture>
             </span>
           </button>
-          <button type="button" class="gallery-item reveal reveal-delay-2" data-src="assets/images/gallery-06.jpg" data-alt="Fishing boats on the beach in Playas, Ecuador" aria-label="Open gallery image 6">
+          <button type="button" class="gallery-item reveal reveal-delay-2" data-src="assets/images/gallery-06.webp" data-alt="Fishing boats on the beach in Playas, Ecuador" aria-label="Open gallery image 6">
             <span class="img-placeholder absolute inset-0" data-label="Fishing boats">
-              <img src="assets/images/gallery-06.jpg" alt="Fishing boats on the beach in Playas, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              <picture>
+                <source type="image/webp" srcset="assets/images/gallery-06-w480.webp 480w, assets/images/gallery-06-w768.webp 768w, assets/images/gallery-06-w1200.webp 1200w" sizes="(max-width: 640px) 100vw, 33vw" />
+                <img src="assets/images/gallery-06-w480.jpg" srcset="assets/images/gallery-06-w480.jpg 480w, assets/images/gallery-06-w768.jpg 768w" sizes="(max-width: 640px) 100vw, 33vw" width="1920" height="1440" alt="Fishing boats on the beach in Playas, Ecuador" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              </picture>
             </span>
           </button>
         </div>
@@ -1136,7 +1111,7 @@
           <a href="#home" class="inline-block" aria-label="Coastline Condos Home">
             <img class="footer-logo" src="assets/brand/coastline-logo-stacked-reversed.svg" alt="Coastline Condos" width="300" height="300" />
           </a>
-          <p class="text-sm text-white/60 max-w-md leading-relaxed mt-3" data-i18n="footer.tagline">
+          <p class="text-sm footer-muted max-w-md leading-relaxed mt-3" data-i18n="footer.tagline">
             Oceanfront Living, Elevated. Premium 3-story ocean-view residences one block from the beach in Playas, Ecuador.
           </p>
           <div class="flex gap-3 mt-6">
@@ -1164,7 +1139,7 @@
         </div>
       </div>
 
-      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between gap-4 text-xs text-white/40">
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between gap-4 text-xs footer-fineprint">
         <p data-i18n="footer.copy">&copy; 2026 Coastline Condos. All rights reserved.
           <button type="button" id="pwa-install" class="pwa-install-btn" hidden data-i18n="pwa.install">Install App</button>
         </p>
@@ -1179,23 +1154,48 @@
   </div>
 
   <!--
-    Script order matters:
-    1. inventory   — unit master data (must load first)
-    2. i18n-extra  — registers new EN/ES strings (must load before main.js)
-    3. main.js     — core: i18n, theme, nav, gallery, forms, inventory UI
-    4. floorplan   — interactive 2D + 2.5D plan viewer
-    5. effects.js  — ocean canvas, panorama, micro-interactions
-    6. experience  — quiz, design studio, concierge chat, PWA
-    7. building3d  — multi-unit 3D explorer (lazy-loads Three.js)
+    Critical path JS only (minified). Experience layer loads after idle
+    so TBT / long tasks drop on first paint (PageSpeed mobile).
   -->
   <!-- Password gate first (client preview) — remove before public launch -->
-  <script src="js/preview-gate.js"></script>
-  <script src="js/inventory.js" defer></script>
-  <script src="js/i18n-extra.js" defer></script>
-  <script src="js/main.js" defer></script>
-  <script src="js/floorplan.js" defer></script>
-  <script src="js/effects.js" defer></script>
-  <script src="js/experience.js" defer></script>
-  <script src="js/building3d.js" defer></script>
+  <script src="js/min/preview-gate.js"></script>
+  <script src="js/min/inventory.js" defer></script>
+  <script src="js/min/i18n-extra.js" defer></script>
+  <script src="js/min/main.js" defer></script>
+  <script>
+    /* Defer non-critical modules until idle / after load */
+    (function () {
+      var files = [
+        'js/min/floorplan.js',
+        'js/min/effects.js',
+        'js/min/experience.js',
+        'js/min/building3d.js'
+      ];
+      var loaded = false;
+      function loadSecondary() {
+        if (loaded) return;
+        loaded = true;
+        files.forEach(function (src) {
+          var s = document.createElement('script');
+          s.src = src;
+          s.defer = true;
+          document.body.appendChild(s);
+        });
+      }
+      function schedule() {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadSecondary, { timeout: 4000 });
+        } else {
+          setTimeout(loadSecondary, 2000);
+        }
+      }
+      if (document.readyState === 'complete') schedule();
+      else window.addEventListener('load', schedule);
+      // Also load when user shows intent (scroll / click) so features work sooner
+      ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (evt) {
+        window.addEventListener(evt, loadSecondary, { once: true, passive: true });
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -2,6 +2,19 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
+function signalReady() {
+  try {
+    const loading = document.getElementById('loading');
+    if (loading) loading.classList.add('hidden');
+    window.dispatchEvent(new CustomEvent('cc:model-ready'));
+  } catch (_) { /* ignore */ }
+}
+function signalError(err) {
+  console.error('[Coastline 3D model]', err);
+  const msg = err && (err.message || String(err));
+  window.dispatchEvent(new CustomEvent('cc:model-error', { detail: msg }));
+}
+
 /* =========================================================================
    COASTLINE CONDOS — procedural 3D reconstruction  (v3, plan-dimensioned)
    Playas, Ecuador. Photo-matched facade language (v2) now sized from the
@@ -83,9 +96,24 @@ const COL = {
 /* ---------------------------------------------------------------------- */
 
 const container = document.getElementById('app');
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(window.innerWidth, window.innerHeight);
+if (!container) {
+  signalError(new Error('Missing #app container'));
+  throw new Error('Missing #app container');
+}
+
+// Iframe can report 0×0 for a frame — never init WebGL at zero size
+const bootW = Math.max(window.innerWidth || 0, container.clientWidth || 0, 640);
+const bootH = Math.max(window.innerHeight || 0, container.clientHeight || 0, 480);
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
+} catch (err) {
+  signalError(err);
+  throw err;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.setSize(bootW, bootH);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -94,7 +122,7 @@ renderer.toneMappingExposure = 1.05;
 container.appendChild(renderer.domElement);
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(46, window.innerWidth / window.innerHeight, 0.1, 1500);
+const camera = new THREE.PerspectiveCamera(46, bootW / bootH, 0.1, 1500);
 camera.position.set(40, 16, 44);
 camera.rotation.order = 'YXZ';
 
@@ -1580,8 +1608,11 @@ function animate() {
 }
 animate();
 
-const loading = document.getElementById('loading');
-setTimeout(() => loading.classList.add('hidden'), 500);
+// Hide spinner once first frame is on screen (and notify failsafe)
+requestAnimationFrame(() => {
+  renderer.render(scene, camera);
+  setTimeout(signalReady, 200);
+});
 
 /* ---------------------------------------------------------------------- */
 /* Units mode — real inventory volumes (data from ../js/inventory.js,      */

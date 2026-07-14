@@ -610,6 +610,24 @@ html.dark .feature-chip {
 .lifestyle-side img {
   object-position: center;
 }
+/* Stack lifestyle collage on small screens for readable photos */
+@media (max-width: 639px) {
+  .lifestyle-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    min-height: 0;
+  }
+  .lifestyle-main {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    min-height: 200px;
+    aspect-ratio: 16 / 10;
+  }
+  .lifestyle-side {
+    min-height: 120px;
+    aspect-ratio: 4 / 3;
+  }
+}
 
 .glass-card {
   background: rgba(250, 248, 245, 0.9);
@@ -1445,10 +1463,18 @@ body {
   transition:
     opacity 0.9s var(--ease-out-expo),
     transform 0.9s var(--ease-out-expo);
+  will-change: opacity, transform;
 }
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
+}
+/* Hero is always painted for LCP (no FOUC when async CSS arrives) */
+.hero .reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 .reveal-delay-1 {
   transition-delay: 0.12s;
@@ -2308,4 +2334,196 @@ html.dark .chat-topic {
   .exp-floor-btn {
     transition: none !important;
   }
+}
+
+/* ==========================================================================
+   Mobile viewing polish (PageSpeed + usability)
+   ========================================================================== */
+
+/* Fluid hero title — avoids huge fixed text-5xl clipping on narrow phones */
+.hero-title {
+  font-size: clamp(2.15rem, 9.5vw, 6rem);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.hero-copy {
+  max-width: 42rem;
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+.hero-poster {
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Notch / home-indicator safe areas */
+.site-header {
+  padding-top: env(safe-area-inset-top);
+}
+.chat-widget {
+  right: max(1.25rem, env(safe-area-inset-right));
+}
+
+/* Larger tap targets on phones */
+@media (max-width: 767px) {
+  .icon-btn,
+  .lang-btn {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+  }
+  .lang-btn {
+    padding: 0.45rem 0.75rem;
+  }
+  .mobile-link {
+    min-height: 2.75rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.05rem;
+  }
+  .btn-primary,
+  .btn-outline,
+  .btn-lg {
+    min-height: 2.85rem;
+    padding-left: 1.35rem;
+    padding-right: 1.35rem;
+  }
+  .section-pad {
+    padding: 3.75rem 0;
+  }
+  /* Stack CTAs full-width for thumb reach */
+  .hero .btn-primary,
+  .hero .btn-outline {
+    width: 100%;
+    max-width: 20rem;
+    justify-content: center;
+  }
+  /* Prevent sticky CTA covering form fields */
+  body.has-sticky-cta {
+    padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
+  }
+  .sticky-cta {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  /* Mobile menu: scrollable if many links + safe bottom */
+  .mobile-menu.is-open {
+    max-height: min(85svh, 32rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  /* Gallery / map iframes don't force horizontal scroll */
+  .map-frame iframe {
+    max-width: 100%;
+  }
+  /* Unit cards: comfy spacing */
+  .unit-card {
+    margin-bottom: 0;
+  }
+  /* Reduce expensive blur on low-power mobile */
+  .site-header.is-scrolled,
+  .sticky-cta {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: clamp(1.85rem, 10vw, 2.4rem);
+  }
+  .logo-img {
+    height: 2.5rem;
+  }
+  .section-title {
+    font-size: clamp(1.6rem, 7vw, 2rem);
+  }
+}
+
+/* Touch devices: kill hover-only transforms that feel sticky */
+@media (hover: none) and (pointer: coarse) {
+  .unit-card:hover,
+  .amenity-card:hover,
+  .gallery-item:hover {
+    transform: none;
+  }
+  .btn-primary:hover {
+    transform: none;
+  }
+}
+
+/* picture elements fill their placeholders */
+.img-placeholder picture,
+.unit-image picture,
+.gallery-item picture {
+  display: contents;
+}
+.img-placeholder picture img,
+.unit-image picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hide ocean canvas work when video is playing (already in rules) — also when reduced data */
+@media (prefers-reduced-data: reduce) {
+  #ocean-canvas,
+  #hero-video,
+  .hero-shimmer {
+    display: none !important;
+  }
+}
+
+/* Footer / hero muted text contrast (AA on dark teal) */
+.footer-muted,
+.hero-tagline {
+  color: rgba(251, 246, 236, 0.82);
+}
+.footer-fineprint {
+  color: rgba(251, 246, 236, 0.75);
+}
+.footer-link {
+  color: rgba(251, 246, 236, 0.85);
+}
+.footer-link:hover {
+  color: #E39A7B;
+}
+
+/* Mobile: kill continuous non-composited animations (PSI: 31 animated elements) */
+@media (max-width: 900px), (prefers-reduced-motion: reduce) {
+  .hero-shimmer,
+  .scroll-line,
+  .preloader-wave,
+  .live-dot,
+  .webcam-scan {
+    animation: none !important;
+  }
+  #ocean-canvas {
+    display: none !important;
+  }
+}
+
+/* Touch targets ≥ 48px (Accessibility) */
+.icon-btn-footer {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.lang-btn {
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+}
+.unit-filter {
+  min-height: 2.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

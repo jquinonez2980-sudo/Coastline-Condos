@@ -1,4 +1,11 @@
 .vercel
+node_modules/
+package-lock.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
 
 # Raw source media — not used by the deployed site, too large for GitHub
 /videos/
@@ -7,3 +14,5 @@
 /website_handoff/
 /pictures/
 *.mov
+
+# Keep site-facing media (assets/) in git so Vercel Git deploys include them

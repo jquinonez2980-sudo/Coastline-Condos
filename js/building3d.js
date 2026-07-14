@@ -197,10 +197,17 @@
   function openModel3D() {
     if (!model3dViewer || !model3dFrame) return;
     model3dLastFocus = document.activeElement;
-    model3dFrame.setAttribute('src', '3d-model/');
+    // Absolute path so it works from any URL depth; cache-bust after deploys
+    const src = new URL('3d-model/', window.location.href).href + '?v=2';
     model3dViewer.classList.remove('hidden');
     model3dViewer.removeAttribute('hidden');
-    requestAnimationFrame(() => model3dViewer.classList.add('is-open'));
+    // Show shell first, then load iframe (avoids 0×0 WebGL boot in display:none)
+    requestAnimationFrame(() => {
+      model3dViewer.classList.add('is-open');
+      if (model3dFrame.getAttribute('src') !== src) {
+        model3dFrame.setAttribute('src', src);
+      }
+    });
     document.body.style.overflow = 'hidden';
     model3dClose && model3dClose.focus();
   }

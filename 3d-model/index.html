@@ -139,14 +139,46 @@
      folder is served standalone; the Units button then stays hidden. -->
 <script src="../js/inventory.js"></script>
 
+<!-- Same CDN as the main site explorer (jsDelivr). unpkg often hangs/blocks. -->
 <script type="importmap">
 {
   "imports": {
-    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
   }
 }
 </script>
 <script type="module" src="./main.js"></script>
+<script>
+  // Failsafe: if the ES module never finishes, don't spin forever
+  (function () {
+    var el = document.getElementById('loading');
+    if (!el) return;
+    var done = function (msg) {
+      if (msg) {
+        el.innerHTML = '<div style="max-width:320px;text-align:center;padding:1rem;line-height:1.5">' +
+          '<strong style="color:#e8c894">3D model could not start</strong><br><br>' +
+          '<span style="opacity:.8;font-size:13px">' + msg + '</span><br><br>' +
+          '<span style="opacity:.55;font-size:12px">Try hard-refresh (Ctrl+F5) or open this page outside the iframe.</span></div>';
+      } else {
+        el.classList.add('hidden');
+      }
+    };
+    window.addEventListener('cc:model-ready', function () { done(null); });
+    window.addEventListener('cc:model-error', function (e) {
+      done((e && e.detail) || 'Unknown error loading Three.js');
+    });
+    window.addEventListener('unhandledrejection', function (e) {
+      var m = (e.reason && (e.reason.message || String(e.reason))) || 'Module failed to load';
+      done(m);
+    });
+    // Absolute last resort after 12s
+    setTimeout(function () {
+      if (!el.classList.contains('hidden') && el.textContent.indexOf('could not start') === -1) {
+        done('Timed out waiting for WebGL / Three.js. Check network blocks on cdn.jsdelivr.net.');
+      }
+    }, 12000);
+  })();
+</script>
 </body>
 </html>
