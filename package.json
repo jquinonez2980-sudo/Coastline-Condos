@@ -3,6 +3,7 @@
   "private": true,
   "description": "Coastline Condos marketing site (static). Optional local tools only — no build required to deploy.",
   "scripts": {
+    "build": "node -e \"console.log('Coastline Condos: static site — no build step')\"",
     "css": "tailwindcss -c tools/tailwind.config.js -i tools/input.css -o css/tailwind.css --minify && node -e \"const fs=require('fs');fs.writeFileSync('css/_b.css',fs.readFileSync('css/tailwind.css')+fs.readFileSync('css/styles.css'));\" && esbuild css/_b.css --minify --outfile=css/site.min.css && node -e \"require('fs').unlinkSync('css/_b.css')\"",
     "js": "node -e \"const{execSync}=require('child_process');const fs=require('fs');fs.mkdirSync('js/min',{recursive:true});for (const f of ['preview-gate','inventory','i18n-extra','main','floorplan','effects','experience','building3d']) execSync('npx esbuild js/'+f+'.js --minify --outfile=js/min/'+f+'.js',{stdio:'inherit'});\"",
     "images": "python tools/optimize-images.py",

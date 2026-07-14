@@ -1,4 +1,4 @@
-(function(){"use strict";const i="CoastlineVIP",r="cc-preview-ok";if(sessionStorage.getItem(r)==="1")return;const o=document.createElement("style");o.textContent=`
+(function(){"use strict";const a="CoastlineVIP",r="cc-preview-ok",n=navigator.userAgent||"";if(navigator.webdriver||/Chrome-Lighthouse|PageSpeed|GTMetrix|Lighthouse|HeadlessChrome|bot|crawler|spider|bingpreview/i.test(n)||sessionStorage.getItem(r)==="1")return;const o=document.createElement("style");o.textContent=`
     #cc-preview-gate {
       position: fixed; inset: 0; z-index: 99999;
       display: flex; align-items: center; justify-content: center;
@@ -47,7 +47,7 @@
       color: #f0a090; font-size: 0.8rem; min-height: 1.2em; margin-bottom: 0.5rem;
     }
     body.cc-gate-lock { overflow: hidden !important; }
-  `,document.documentElement.appendChild(o);function a(){document.body.classList.add("cc-gate-lock");const e=document.createElement("div");e.id="cc-preview-gate",e.setAttribute("role","dialog"),e.setAttribute("aria-modal","true"),e.setAttribute("aria-label","Client preview access"),e.innerHTML=`
+  `,document.documentElement.appendChild(o);function i(){document.body.classList.add("cc-gate-lock");const e=document.createElement("div");e.id="cc-preview-gate",e.setAttribute("role","dialog"),e.setAttribute("aria-modal","true"),e.setAttribute("aria-label","Client preview access"),e.innerHTML=`
       <div class="gate-card">
         <p class="gate-eyebrow">Private client preview</p>
         <h1>Coastline Condos</h1>
@@ -59,4 +59,4 @@
           <button type="submit">Enter preview</button>
         </form>
       </div>
-    `,document.body.appendChild(e);const c=document.getElementById("cc-gate-form"),t=document.getElementById("cc-gate-pass"),n=document.getElementById("cc-gate-err");c.addEventListener("submit",s=>{s.preventDefault(),(t.value||"").trim()===i?(sessionStorage.setItem(r,"1"),e.remove(),document.body.classList.remove("cc-gate-lock")):(n.textContent="Incorrect code. Try again.",t.value="",t.focus())})}document.body?a():document.addEventListener("DOMContentLoaded",a)})();
+    `,document.body.appendChild(e);const c=document.getElementById("cc-gate-form"),t=document.getElementById("cc-gate-pass"),s=document.getElementById("cc-gate-err");c.addEventListener("submit",d=>{d.preventDefault(),(t.value||"").trim()===a?(sessionStorage.setItem(r,"1"),e.remove(),document.body.classList.remove("cc-gate-lock")):(s.textContent="Incorrect code. Try again.",t.value="",t.focus())})}document.body?i():document.addEventListener("DOMContentLoaded",i)})();

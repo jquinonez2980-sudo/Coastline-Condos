@@ -9,6 +9,15 @@
   const PREVIEW_PASSWORD = 'CoastlineVIP';
   const STORAGE_KEY = 'cc-preview-ok';
 
+  // PageSpeed / Lighthouse / crawlers must see the real page (clean session = no unlock)
+  const ua = navigator.userAgent || '';
+  if (
+    navigator.webdriver ||
+    /Chrome-Lighthouse|PageSpeed|GTMetrix|Lighthouse|HeadlessChrome|bot|crawler|spider|bingpreview/i.test(ua)
+  ) {
+    return;
+  }
+
   if (sessionStorage.getItem(STORAGE_KEY) === '1') return;
 
   const style = document.createElement('style');
