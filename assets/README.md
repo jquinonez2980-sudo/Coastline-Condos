@@ -1,0 +1,67 @@
+# Coastline Condos — Media Assets
+
+## Current status
+
+**Playas lifestyle / location photos** are installed from free **Wikimedia Commons** sources (beach, malecón, plaza, market, dining exterior, Engabao).  
+See `images/playas/` (archive + `CREDITS.md`) and the wired site filenames below.
+
+**Still replace before launch:**
+- Unit card renderings (`unit-*.jpg`)
+- Real condo interiors / project exterior
+- Hero video remains your own (not replaced)
+
+Contact numbers on the site match Instagram `@coastline_condos` public posts:
+- WhatsApp: `+593 96 994 3941` and `+593 99 484 3667`
+- Location: Km 5 Vía Data, Playas, Ecuador
+
+---
+
+Keep filenames the same (or update paths in `index.html`) for a drop-in swap.
+
+## Video
+
+| Path | Specs | Notes |
+|------|--------|--------|
+| `videos/ocean-hero.mp4` | 1920×1080 or 4K, H.264, muted loop, 10–30s | Hero background. Compress with HandBrake/FFmpeg. Add WebM optional for size. |
+| Poster | `images/hero-poster.jpg` | First frame / still of hero (used before video loads) |
+
+## Images — Lifestyle & Story
+
+| Path | Suggested content | Alt text idea |
+|------|-------------------|---------------|
+| `images/lifestyle-balcony.jpg` | Sunrise from private balcony | Ocean view condo balcony in Playas Ecuador at sunrise |
+| `images/lifestyle-beach.jpg` | Beach walk near building | Golden sand beach near Coastline Condos Playas |
+| `images/lifestyle-interior.jpg` | Bright open living room | Modern luxury condo interior with ocean light |
+| `images/playas-beach.jpg` | Playas lifestyle / surf | Playas Ecuador beach lifestyle |
+| `images/playas-dining.jpg` | Local dining / ceviche | Coastal dining in Playas Ecuador |
+| `images/og-hero.jpg` | 1200×630 social share | Open Graph / Twitter card |
+
+## Unit renderings
+
+| Path | Unit |
+|------|------|
+| `images/unit-pacific-2br.jpg` | The Pacific — 2BR |
+| `images/unit-horizon-2br.jpg` | The Horizon — 2BR corner |
+| `images/unit-azure-3br.jpg` | The Azure — 3BR flagship |
+
+## Gallery (masonry)
+
+| Path |
+|------|
+| `images/gallery-01.jpg` … `gallery-06.jpg` |
+
+Use high-quality JPEGs (WebP preferred if you update the HTML `src`). Lazy loading is already enabled.
+
+## Embeds to replace in HTML
+
+1. **Google Map** — Update the iframe `src` in `#location` with your exact pin (Google Maps → Share → Embed).
+2. **Matterport / 360** — Replace the `.tour-placeholder` block in `#tour` with your iframe.
+3. **Instagram** — Replace `.ig-embed-placeholder` with Elfsight / SnapWidget / official embed for `@coastline_condos`.
+4. **Contact form backend** — Wire `js/main.js` form submit to Formspree, Netlify Forms, or your API (leads currently save to `localStorage` for demo).
+
+## Optimization tips
+
+- Resize images to max ~2000px wide for full-bleed; ~1200px for cards.
+- Use `loading="lazy"` (already on non-hero images).
+- Prefer WebP + JPEG fallback for production builds.
+- Keep hero video under ~5–8 MB if possible.

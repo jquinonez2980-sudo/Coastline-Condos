@@ -1,0 +1,10 @@
+<svg viewBox="0 0 620 220" xmlns="http://www.w3.org/2000/svg"><g transform="translate(10,10) scale(0.6667)"><g id="icon3-small-reversed"><path d="M 104.0,192.0 Q 91.9,157.3 46.0,152.9 Q 67.3,193.8 104.0,192.0 Z" fill="#CFE9DD"/><path d="M 104.0,192.0 Q 122.9,149.4 88.0,101.4 Q 71.7,158.5 104.0,192.0 Z" fill="#CFE9DD"/><path d="M 104.0,192.0 Q 138.3,176.8 143.2,129.2 Q 102.7,154.5 104.0,192.0 Z" fill="#CFE9DD"/>
+    <rect x="112" y="108" width="96" height="84" rx="10" fill="#FFFFFF"/>
+    <rect x="124" y="122" width="30" height="26" rx="4" fill="#E9C98C" opacity="0.55"/>
+    <rect x="166" y="122" width="30" height="26" rx="4" fill="#E9C98C" opacity="0.55"/>
+    <rect x="124" y="156" width="30" height="26" rx="4" fill="#E9C98C" opacity="0.55"/>
+    <rect x="166" y="156" width="30" height="26" rx="4" fill="#E9C98C" opacity="0.55"/>
+    </g></g>
+    <text x="244" y="98" text-anchor="start" font-family="Georgia, 'Playfair Display', 'Times New Roman', serif" font-size="52" letter-spacing="3" fill="#FFFFFF">COASTLINE</text>
+    <text x="244" y="132" text-anchor="start" font-family="'Century Gothic', 'Futura', 'Poppins', 'Montserrat', Helvetica, Arial, sans-serif" font-size="19" letter-spacing="8" fill="#E9C98C">C O N D O S</text>
+    </svg>

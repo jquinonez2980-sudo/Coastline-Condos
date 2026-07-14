@@ -1,0 +1,29 @@
+{
+  "name": "Coastline Condos — Playas, Ecuador",
+  "short_name": "Coastline",
+  "description": "Premium 3-story ocean-view condominiums one block from the beach in Playas, Ecuador.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBF6EC",
+  "theme_color": "#1E4E4E",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

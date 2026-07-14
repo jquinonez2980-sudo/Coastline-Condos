@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- SEO -->
+  <title>Coastline Condos | Oceanfront Living, Elevated - Playas, Ecuador</title>
+  <meta name="description" content="Coastline Condos - premium 3-story ocean-view condominiums one block from the beach in Playas, Ecuador. Private terraces, courtyard pool, and modern coastal luxury. Register for VIP access." />
+  <meta name="keywords" content="Coastline Condos, Playas Ecuador, ocean view condo, beach condominium, luxury real estate Ecuador, Pacific Ocean homes" />
+  <meta name="author" content="Coastline Condos" />
+  <!-- Preview build: keep out of Google until public launch -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://coastlinecondos.ec/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Coastline Condos | Oceanfront Living, Elevated" />
+  <meta property="og:description" content="Premium 3-story ocean-view condominiums just one block from the beach in Playas, Ecuador." />
+  <meta property="og:image" content="assets/images/og-hero.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="es_EC" />
+  <meta property="og:site_name" content="Coastline Condos" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Coastline Condos | Oceanfront Living, Elevated" />
+  <meta name="twitter:description" content="Premium ocean-view condos in Playas, Ecuador - one block from the beach." />
+  <meta name="twitter:image" content="assets/images/og-hero.jpg" />
+
+  <!-- Theme & Favicon (Palm Horizon brand — see website_handoff/) -->
+  <meta name="theme-color" content="#1E4E4E" />
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <!-- LCP: hero poster loads at highest priority -->
+  <link rel="preload" as="image" href="assets/images/hero-poster.jpg" fetchpriority="high" />
+
+  <!-- Fonts: Playfair Display (headings/wordmark) + Poppins (body/UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            /* "ocean" is now the brand teal scale (teal-ink #1E4E4E at 950) */
+            ocean: {
+              50: '#f2f8f7',
+              100: '#dfeeed',
+              200: '#bedddb',
+              300: '#93c7c4',
+              400: '#6fb3b0',
+              500: '#4a9797',
+              600: '#3c8585',
+              700: '#357878',
+              800: '#2f6b6b',
+              900: '#2A6868',
+              950: '#1E4E4E',
+            },
+            /* "sand" is now the brand cream scale (#FBF6EC at 50) */
+            sand: {
+              50: '#FBF6EC',
+              100: '#f6eedd',
+              200: '#ede0c6',
+              300: '#e2d0ac',
+              400: '#d4ba8a',
+              500: '#c4a46e',
+              600: '#b08d5a',
+            },
+            /* "champagne" is now the brand terracotta accent */
+            champagne: {
+              DEFAULT: '#C9714F',
+              light: '#E39A7B',
+              dark: '#A85A3B',
+            },
+            gold: '#A8792F',
+            palm: {
+              DEFAULT: '#3E7A5C',
+              light: '#8FC49A',
+            },
+          },
+          fontFamily: {
+            sans: ['Poppins', 'Montserrat', 'system-ui', 'sans-serif'],
+            display: ['Playfair Display', 'Georgia', 'serif'],
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.8s ease-out forwards',
+            'float': 'float 6s ease-in-out infinite',
+            'wave': 'wave 8s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            wave: {
+              '0%, 100%': { transform: 'translateX(0)' },
+              '50%': { transform: 'translateX(-20px)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Coastline Condos",
+    "description": "Premium 3-story ocean-view condominium development in Playas, Ecuador.",
+    "url": "https://coastlinecondos.ec",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Playas",
+      "addressRegion": "Guayas",
+      "addressCountry": "EC"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -2.6300,
+      "longitude": -80.3900
+    },
+    "sameAs": [
+      "https://www.instagram.com/coastline_condos",
+      "https://wa.me/593969943941"
+    ]
+  }
+  </script>
+
+  <script>
+    window.addEventListener('load', function () {
+      var p = document.getElementById('preloader');
+      if (p) { p.classList.add('is-done'); setTimeout(function () { p.setAttribute('hidden', ''); }, 800); }
+    });
+    setTimeout(function () {
+      var p = document.getElementById('preloader');
+      if (p && !p.classList.contains('is-done')) {
+        p.classList.add('is-done');
+        p.setAttribute('hidden', '');
+      }
+    }, 2500);
+  </script>
+</head>
+<body class="font-sans bg-sand-50 text-ocean-950 antialiased dark:bg-ocean-950 dark:text-sand-50 transition-colors duration-500">
+
+  <!-- Skip link (a11y) -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Reading progress (thin champagne line at the very top) -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ========== PRELOADER ========== -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <img class="preloader-logo" src="assets/brand/coastline-logo-stacked-reversed.svg" alt="" width="300" height="300" />
+      <div class="preloader-wave"></div>
+    </div>
+  </div>
+
+  <!-- ========== HEADER / NAV ========== -->
+  <header id="site-header" class="site-header fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Logo -->
+        <a href="#home" class="logo group flex items-center" aria-label="Coastline Condos Home">
+          <!-- Horizontal lockup: reversed over dark header, full color over light sections (CSS swaps them) -->
+          <img class="logo-img logo-img-reversed" src="assets/brand/coastline-logo-horizontal-reversed.svg" alt="Coastline Condos" width="620" height="220" />
+          <img class="logo-img logo-img-color" src="assets/brand/coastline-logo-horizontal-color.svg" alt="" aria-hidden="true" width="620" height="220" />
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+          <a href="#home" class="nav-link" data-i18n="nav.home">Home</a>
+          <a href="#residences" class="nav-link" data-i18n="nav.residences">Residences</a>
+          <a href="#explorer" class="nav-link" data-i18n="nav.explorer">3D</a>
+          <a href="#amenities" class="nav-link" data-i18n="nav.amenities">Amenities</a>
+          <a href="#location" class="nav-link" data-i18n="nav.location">Location</a>
+          <a href="#gallery" class="nav-link" data-i18n="nav.gallery">Gallery</a>
+          <a href="#design" class="nav-link" data-i18n="nav.design">Design</a>
+          <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-2 md:gap-3">
+          <!-- Language toggle -->
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <button type="button" id="lang-en" class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+            <button type="button" id="lang-es" class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
+          </div>
+
+          <!-- Dark mode -->
+          <button type="button" id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+            <svg class="icon-sun w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+            <svg class="icon-moon w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+            </svg>
+          </button>
+
+          <!-- Social -->
+          <a href="https://wa.me/593969943941" target="_blank" rel="noopener noreferrer" class="icon-btn hidden sm:inline-flex" aria-label="WhatsApp">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.85 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/coastline_condos" target="_blank" rel="noopener noreferrer" class="icon-btn hidden sm:inline-flex" aria-label="Instagram @coastline_condos">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+
+          <!-- VIP CTA (desktop) -->
+          <a href="#contact" class="btn-primary hidden md:inline-flex text-sm" data-i18n="nav.vip">VIP Access</a>
+
+          <!-- Mobile menu button -->
+          <button type="button" id="mobile-menu-btn" class="icon-btn lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="w-6 h-6 menu-open" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg class="w-6 h-6 menu-close hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu lg:hidden" hidden>
+      <nav class="flex flex-col px-6 py-6 gap-1" aria-label="Mobile navigation">
+        <a href="#home" class="mobile-link" data-i18n="nav.home">Home</a>
+        <a href="#residences" class="mobile-link" data-i18n="nav.residences">Residences</a>
+        <a href="#explorer" class="mobile-link" data-i18n="nav.explorer">3D</a>
+        <a href="#design" class="mobile-link" data-i18n="nav.design">Design</a>
+        <a href="#amenities" class="mobile-link" data-i18n="nav.amenities">Amenities</a>
+        <a href="#location" class="mobile-link" data-i18n="nav.location">Location</a>
+        <a href="#gallery" class="mobile-link" data-i18n="nav.gallery">Gallery</a>
+        <a href="#about" class="mobile-link" data-i18n="nav.about">About</a>
+        <a href="#contact" class="mobile-link" data-i18n="nav.contact">Contact</a>
+        <div class="flex gap-4 mt-4 pt-4 border-t border-white/10">
+          <a href="https://wa.me/593969943941" target="_blank" rel="noopener noreferrer" class="text-sm opacity-80 hover:opacity-100">WhatsApp</a>
+          <a href="https://www.instagram.com/coastline_condos" target="_blank" rel="noopener noreferrer" class="text-sm opacity-80 hover:opacity-100">@coastline_condos</a>
+        </div>
+        <a href="#contact" class="btn-primary mt-4 text-center" data-i18n="nav.vip">VIP Access</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ========== HERO ========== -->
+    <section id="home" class="hero relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Hero">
+      <!-- Video / image background -->
+      <div class="hero-media absolute inset-0" data-parallax="0.3">
+        <video
+          id="hero-video"
+          class="absolute inset-0 w-full h-full object-cover"
+          autoplay muted loop playsinline poster="assets/images/hero-poster.jpg"
+          aria-hidden="true"
+        >
+          <source src="assets/videos/ocean-hero.mp4" type="video/mp4" />
+        </video>
+        <!-- Fallback gradient when video missing -->
+        <div class="hero-fallback absolute inset-0" aria-hidden="true"></div>
+        <!-- Living ocean: procedural waves + light glitter (js/effects.js) -->
+        <canvas id="ocean-canvas" class="absolute inset-0 w-full h-full" aria-hidden="true"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-ocean-950/70 via-ocean-950/40 to-ocean-950/80"></div>
+        <div class="absolute inset-0 hero-shimmer" aria-hidden="true"></div>
+      </div>
+
+      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center text-white pt-20">
+        <p class="reveal text-champagne-light tracking-[0.35em] uppercase text-xs sm:text-sm font-medium mb-6" data-i18n="hero.eyebrow">
+          Playas, Ecuador · Km 5 Vía Data · Vista al Mar
+        </p>
+        <h1 class="reveal reveal-delay-1 font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium leading-[1.05] mb-6">
+          <span data-i18n="hero.title1">Live Where the Ocean</span><br />
+          <span class="italic text-champagne-light" data-i18n="hero.title2">Meets Elegance</span>
+        </h1>
+        <p class="reveal reveal-delay-2 text-lg sm:text-xl text-white/85 max-w-2xl mx-auto mb-10 font-light leading-relaxed" data-i18n="hero.subtitle">
+          A boutique 3-story ocean-view condominium development. Private balconies, panoramic Pacific vistas, and elevated coastal living.
+        </p>
+        <div class="reveal reveal-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#contact" class="btn-primary btn-lg" data-i18n="hero.cta1">Register for VIP Access</a>
+          <a href="#residences" class="btn-outline btn-lg" data-i18n="hero.cta2">View Floor Plans</a>
+        </div>
+        <button type="button" class="reveal reveal-delay-4 quiz-link mt-6" data-quiz-open>
+          ✦ <span data-i18n="quiz.open">Find Your Perfect Unit</span>
+        </button>
+        <p class="reveal reveal-delay-4 mt-10 text-sm text-white/60 tracking-wide" data-i18n="hero.tagline">
+          Oceanfront Living, Elevated.
+        </p>
+      </div>
+
+      <!-- Scroll indicator -->
+      <a href="#discover" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors" aria-label="Scroll to discover">
+        <span class="text-[10px] tracking-[0.3em] uppercase" data-i18n="hero.scroll">Scroll</span>
+        <span class="scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ========== DISCOVER / STORYTELLING ========== -->
+    <section id="discover" class="section-pad relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] dark:opacity-[0.06] pointer-events-none" aria-hidden="true">
+        <svg viewBox="0 0 400 800" class="w-full h-full" fill="currentColor"><path d="M0,200 Q100,100 200,200 T400,200 L400,800 L0,800 Z"/></svg>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div class="reveal">
+            <p class="section-eyebrow" data-i18n="discover.eyebrow">Discover Coastline Condos</p>
+            <h2 class="section-title mb-6" data-i18n="discover.title">
+              Wake up to the Pacific. Live in timeless calm.
+            </h2>
+            <div class="space-y-5 text-ocean-900/80 dark:text-sand-100/80 leading-relaxed text-base sm:text-lg">
+              <p data-i18n="discover.p1">
+                Nestled in the serene coastal town of Playas, Ecuador, Coastline Condos redefines boutique ocean living. Our intimate 3-story residence sits just one block from golden Pacific sands - close enough to hear the waves, elevated enough to savor uninterrupted horizons.
+              </p>
+              <p data-i18n="discover.p2">
+                Modern architecture meets tropical elegance: floor-to-ceiling glass, open-concept interiors, and private balconies designed for sunrise coffee and sunset gatherings. Every residence is crafted for those who seek quiet luxury by the sea.
+              </p>
+            </div>
+            <ul class="mt-8 grid sm:grid-cols-2 gap-4">
+              <li class="feature-chip">
+                <span class="feature-dot"></span>
+                <span data-i18n="discover.f1">1 block to the beach</span>
+              </li>
+              <li class="feature-chip">
+                <span class="feature-dot"></span>
+                <span data-i18n="discover.f2">Panoramic ocean views</span>
+              </li>
+              <li class="feature-chip">
+                <span class="feature-dot"></span>
+                <span data-i18n="discover.f3">Boutique 3-story design</span>
+              </li>
+              <li class="feature-chip">
+                <span class="feature-dot"></span>
+                <span data-i18n="discover.f4">Private ocean balconies</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="reveal reveal-delay-2 relative">
+            <div class="lifestyle-grid">
+              <figure class="lifestyle-main img-placeholder has-image" data-label="Playas beach">
+                <img src="assets/images/lifestyle-balcony.jpg" alt="Beach at Playas (General Villamil), Ecuador — open Pacific horizon" loading="lazy" class="w-full h-full object-cover" onerror="this.parentElement.classList.remove('has-image'); this.style.display='none'" />
+              </figure>
+              <figure class="lifestyle-side img-placeholder has-image" data-label="Engabao coast">
+                <img src="assets/images/lifestyle-beach.jpg" alt="Coastal beach near Engabao, Playas canton, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.parentElement.classList.remove('has-image'); this.style.display='none'" />
+              </figure>
+              <figure class="lifestyle-side img-placeholder has-image" data-label="Malecón Playas">
+                <img src="assets/images/lifestyle-interior.jpg" alt="Malecón boardwalk in Playas, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.parentElement.classList.remove('has-image'); this.style.display='none'" />
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== STATS STRIP (count-up on scroll) ========== -->
+    <section id="stats" class="stats-strip" aria-label="Key facts">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          <div class="stat reveal">
+            <p class="stat-num font-display"><span data-count="1">0</span></p>
+            <p class="stat-label" data-i18n="stats.s1">Block to the Beach</p>
+          </div>
+          <div class="stat reveal reveal-delay-1">
+            <p class="stat-num font-display"><span data-count="3">0</span></p>
+            <p class="stat-label" data-i18n="stats.s2">Stories of Design</p>
+          </div>
+          <div class="stat reveal reveal-delay-2">
+            <p class="stat-num font-display"><span data-count="360">0</span>°</p>
+            <p class="stat-label" data-i18n="stats.s3">Degrees of Ocean Views</p>
+          </div>
+          <div class="stat reveal reveal-delay-3">
+            <p class="stat-num font-display"><span data-count="24">0</span>/7</p>
+            <p class="stat-label" data-i18n="stats.s4">Security &amp; Concierge</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RESIDENCES / FLOOR PLANS ========== -->
+    <section id="residences" class="section-pad bg-white dark:bg-ocean-900/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+          <p class="section-eyebrow" data-i18n="res.eyebrow">Residences</p>
+          <h2 class="section-title mb-4" data-i18n="res.title">Thoughtfully designed homes for ocean living</h2>
+          <p class="section-sub" data-i18n="res.sub">
+            Eight residences across three levels — 2 to 4 bedrooms with open layouts, private terraces, and ocean-oriented living. Prices from $90,000.
+          </p>
+          <button type="button" class="btn-outline mt-6 inline-flex items-center gap-2" data-quiz-open>
+            ✦ <span data-i18n="quiz.open">Find Your Perfect Unit</span>
+          </button>
+        </div>
+
+        <div id="unit-filters" class="unit-filters reveal mb-8" role="group" aria-label="Filter residences"></div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8" id="unit-grid">
+          <!-- Cards injected from js/inventory.js via main.js -->
+        </div>
+
+        <!-- Interactive floor plan viewer (2D + 2.5D) -->
+        <div id="floorplan-viewer" class="floorplan-viewer hidden" role="dialog" aria-modal="true" aria-labelledby="fp-title" hidden>
+          <div class="floorplan-panel floorplan-panel-wide">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <p class="section-eyebrow mb-1" data-i18n="res.planlabel">Interactive Floor Plan</p>
+                <h3 id="fp-title" class="font-display text-3xl">Unit</h3>
+                <p id="fp-subtitle" class="text-sm opacity-70 mt-1"></p>
+                <div class="flex flex-wrap items-center gap-2 mt-3">
+                  <span id="fp-status" class="unit-badge fp-status-badge">Available</span>
+                  <span id="fp-price" class="unit-price-inline"></span>
+                </div>
+              </div>
+              <button type="button" id="fp-close" class="icon-btn" aria-label="Close floor plan viewer">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+              </button>
+            </div>
+
+            <div class="fp-mode-toggle" role="group" aria-label="Plan view mode">
+              <button type="button" id="fp-mode-2d" class="fp-mode-btn is-active" aria-pressed="true" data-i18n="fp.mode2d">2D Plan</button>
+              <button type="button" id="fp-mode-3d" class="fp-mode-btn" aria-pressed="false" data-i18n="fp.mode3d">2.5D View</button>
+            </div>
+
+            <div class="floorplan-canvas" id="fp-canvas">
+              <div id="fp-2d-stage" class="fp-2d-stage">
+                <svg id="fp-svg" viewBox="0 0 420 340" class="fp-svg" role="img" aria-label="Interactive floor plan"></svg>
+              </div>
+              <div id="fp-3d-canvas" class="fp-3d-canvas" hidden></div>
+              <p id="fp-room-tip" class="fp-room-tip" hidden></p>
+              <p id="fp-room-hint" class="fp-room-hint text-center text-xs opacity-50 mt-3" data-i18n="fp.roomhint">Hover or tap a room · Drag to pan · Scroll to zoom</p>
+              <div id="fp-zoom-controls" class="flex items-center justify-center gap-3 mt-3">
+                <button type="button" id="fp-zoom-out" class="btn-ghost text-sm" aria-label="Zoom out">−</button>
+                <span id="fp-zoom-label" class="text-sm opacity-60">100%</span>
+                <button type="button" id="fp-zoom-in" class="btn-ghost text-sm" aria-label="Zoom in">+</button>
+                <button type="button" id="fp-zoom-reset" class="btn-ghost text-sm" data-i18n="fp.reset">Reset</button>
+              </div>
+            </div>
+            <ul id="fp-features" class="mt-6 grid sm:grid-cols-2 gap-2 text-sm text-ocean-900/75 dark:text-sand-100/75"></ul>
+            <div class="flex flex-wrap items-center gap-4 mt-8">
+              <a href="#contact" id="fp-inquire" class="btn-primary inline-flex" data-i18n="res.inquire">Inquire About This Unit</a>
+              <a href="assets/plans/planta-baja.pdf" id="fp-download" class="btn-ghost inline-flex text-sm" target="_blank" rel="noopener" data-i18n="fp.download">Download official plan (PDF)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 3D BUILDING EXPLORER ========== -->
+    <section id="explorer" class="section-pad bg-white dark:bg-ocean-900/40 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+          <p class="section-eyebrow" data-i18n="exp.eyebrow">Interactive 3D Experience</p>
+          <h2 class="section-title mb-4" data-i18n="exp.title">Explore the building, suite by suite</h2>
+          <p class="section-sub" data-i18n="exp.sub">
+            Rotate the residence in real time, select a level, click a suite, and switch day/night lighting — mapped to the real Coastline inventory.
+          </p>
+        </div>
+
+        <div class="explorer-grid items-stretch">
+          <!-- Stage: SVG elevation by default, WebGL canvas replaces it when Three.js loads -->
+          <div class="reveal">
+            <div id="explorer-stage" class="explorer-stage">
+              <button type="button" id="exp-fullscreen-btn" class="exp-fullscreen-btn" aria-label="Open full 3D model in fullscreen">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9M20.25 20.25h-4.5m4.5 0v-4.5m0 4.5L15 15"/></svg>
+              </button>
+              <!-- Fallback / instant-load elevation (also the no-WebGL experience) -->
+              <svg id="explorer-fallback" viewBox="0 0 520 380" class="explorer-svg" role="img" aria-label="Elevation of Coastline Condos: three floors with suites">
+                <defs>
+                  <linearGradient id="exp-sky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#8ec3dd"/><stop offset="1" stop-color="#d9ecf4"/>
+                  </linearGradient>
+                  <linearGradient id="exp-sea" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#2F8F8A"/><stop offset="1" stop-color="#1E4E4E"/>
+                  </linearGradient>
+                </defs>
+                <rect width="520" height="380" fill="url(#exp-sky)"/>
+                <rect y="300" width="520" height="80" fill="url(#exp-sea)"/>
+                <rect y="290" width="520" height="14" fill="#e8d5b0"/>
+                <!-- Floor 3: 301 | 302 (set back on the right) -->
+                <g data-svg-floor="3" class="exp-svg-floor" tabindex="0" role="button" aria-label="Level 3">
+                  <rect x="140" y="94" width="90" height="60" fill="#d4d0c8" stroke="#1E4E4E" stroke-opacity="0.2" data-svg-unit="301"/>
+                  <rect x="230" y="94" width="130" height="60" fill="#c8c4bc" stroke="#1E4E4E" stroke-opacity="0.2" data-svg-unit="302"/>
+                  <rect x="360" y="140" width="24" height="14" fill="#e6ddcc" stroke="#1E4E4E" stroke-opacity="0.15"/>
+                  <text x="185" y="128" text-anchor="middle" font-size="12" fill="#1E4E4E" opacity="0.7">301</text>
+                  <text x="295" y="128" text-anchor="middle" font-size="12" fill="#1E4E4E" opacity="0.7">302</text>
+                  <rect x="132" y="150" width="256" height="6" rx="2" fill="#A8792F"/>
+                </g>
+                <!-- Floor 2: 201 | 202 | 203 -->
+                <g data-svg-floor="2" class="exp-svg-floor" tabindex="0" role="button" aria-label="Level 2">
+                  <rect x="140" y="158" width="80" height="60" fill="#e8f4f0" stroke="#1E4E4E" stroke-opacity="0.2" data-svg-unit="201"/>
+                  <rect x="220" y="158" width="80" height="60" fill="#e8f4f0" stroke="#1E4E4E" stroke-opacity="0.2" data-svg-unit="202"/>
+                  <rect x="300" y="158" width="80" height="60" fill="#f5e6c8" stroke="#1E4E4E" stroke-opacity="0.2" data-svg-unit="203"/>
+                  <text x="180" y="192" text-anchor="middle" font-size="11" fill="#1E4E4E" opacity="0.75">201</text>
+                  <text x="260" y="192" text-anchor="middle" font-size="11" fill="#1E4E4E" opacity="0.75">202</text>
+                  <text x="340" y="192" text-anchor="middle" font-size="11" fill="#1E4E4E" opacity="0.75">203</text>
+                  <rect x="132" y="214" width="256" height="6" rx="2" fill="#A8792F"/>
+                </g>
+                <!-- Floor 1: 101 | 102 | 103 -->
+                <g data-svg-floor="1" class="exp-svg-floor" tabindex="0" role="button" aria-label="Ground floor">
+                  <rect x="140" y="222" width="80" height="68" fill="#e8f4f0" stroke="#1E4E4E" stroke-opacity="0.2" data-svg-unit="101"/>
+                  <rect x="220" y="222" width="80" height="68" fill="#e8f4f0" stroke="#1E4E4E" stroke-opacity="0.2" data-svg-unit="102"/>
+                  <rect x="300" y="222" width="80" height="68" fill="#e8f4f0" stroke="#1E4E4E" stroke-opacity="0.2" data-svg-unit="103"/>
+                  <text x="180" y="260" text-anchor="middle" font-size="11" fill="#1E4E4E" opacity="0.75">101</text>
+                  <text x="260" y="260" text-anchor="middle" font-size="11" fill="#1E4E4E" opacity="0.75">102</text>
+                  <text x="340" y="260" text-anchor="middle" font-size="11" fill="#1E4E4E" opacity="0.75">103</text>
+                </g>
+                <!-- Ground courtyard pool (per Planta Baja) -->
+                <rect x="94" y="292" width="34" height="9" rx="3" fill="#39b6d8"/>
+                <!-- Palms -->
+                <g fill="#1E4E4E" opacity="0.85">
+                  <path d="M80 290 q6 -40 2 -64 l6 0 q8 26 4 64 z"/>
+                  <path d="M88 228 q-24 -10 -40 2 q22 -22 42 -12 q22 -12 40 6 q-20 -6 -42 4 z"/>
+                  <path d="M448 290 q-6 -34 -2 -54 l6 0 q6 22 2 54 z"/>
+                  <path d="M452 238 q-20 -8 -34 2 q18 -18 36 -10 q18 -10 34 5 q-17 -5 -36 3 z"/>
+                </g>
+              </svg>
+              <!-- Hint chip -->
+              <p id="exp-hint" class="exp-hint" data-i18n="exp.hint">Drag to rotate · Click a suite</p>
+            </div>
+          </div>
+
+          <!-- Controls + live info panel -->
+          <div class="reveal reveal-delay-2 flex flex-col gap-4">
+            <div class="exp-controls">
+              <button type="button" class="exp-floor-btn" data-floor="3" aria-pressed="false" data-i18n="exp.f3">Level 3 · 301 · 302</button>
+              <button type="button" class="exp-floor-btn" data-floor="2" aria-pressed="false" data-i18n="exp.f2">Level 2 · 201–203</button>
+              <button type="button" class="exp-floor-btn" data-floor="1" aria-pressed="false" data-i18n="exp.f1">Ground · 101–103</button>
+            </div>
+
+            <div class="exp-daynight" role="group" aria-label="Lighting">
+              <button type="button" id="exp-day" class="exp-dn-btn is-active" data-i18n="exp.day">Day</button>
+              <button type="button" id="exp-night" class="exp-dn-btn" data-i18n="exp.night">Night</button>
+            </div>
+
+            <div class="exp-info glass-card p-6" aria-live="polite">
+              <h3 id="exp-info-title" class="font-display text-2xl mb-2">&nbsp;</h3>
+              <p id="exp-info-desc" class="text-sm opacity-75 leading-relaxed mb-3" data-i18n="exp.select">Select a floor or suite</p>
+              <div id="exp-unit-list" class="exp-unit-list"></div>
+              <button type="button" id="exp-info-cta" class="unit-cta mt-3" data-i18n="exp.viewplan" hidden>Explore Plan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fullscreen 3D model viewer (photo-matched, plan-dimensioned reconstruction) -->
+    <div id="model3d-viewer" class="model3d-viewer hidden" role="dialog" aria-modal="true" aria-label="Full 3D model of Coastline Condos" hidden>
+      <button type="button" id="model3d-close" class="icon-btn model3d-close" aria-label="Close 3D model">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <iframe id="model3d-frame" class="model3d-frame" title="Coastline Condos — full 3D model" loading="lazy"></iframe>
+    </div>
+
+    <!-- ========== AMENITIES ========== -->
+    <section id="amenities" class="section-pad relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+          <p class="section-eyebrow" data-i18n="am.eyebrow">Amenities</p>
+          <h2 class="section-title mb-4" data-i18n="am.title">Elevated living, every day</h2>
+          <p class="section-sub" data-i18n="am.sub">
+            From the palm-framed pool courtyard to smart-home comfort - every detail is designed for a slower, richer coastal life.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="amenity-card reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M3 12h18M3 12c0 4 4 7 9 7s9-3 9-7M3 12c0-4 4-7 9-7s9 3 9 7"/></svg>
+            </div>
+            <h3 class="font-display text-xl mb-2" data-i18n="am.a1.t">Pool & Sun Deck</h3>
+            <p class="text-sm leading-relaxed opacity-75" data-i18n="am.a1.d">Resort-style courtyard pool with travertine deck and royal palms - sunrise swims a block from the sea.</p>
+          </article>
+
+          <article class="amenity-card reveal reveal-delay-1">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M12 3v2m0 14v2M5.6 5.6l1.4 1.4m10 10l1.4 1.4M3 12h2m14 0h2M5.6 18.4l1.4-1.4m10-10l1.4-1.4M8 12a4 4 0 118 0 4 4 0 01-8 0z"/></svg>
+            </div>
+            <h3 class="font-display text-xl mb-2" data-i18n="am.a2.t">Beach Club Access</h3>
+            <p class="text-sm leading-relaxed opacity-75" data-i18n="am.a2.d">Privileged access to beach club comforts - towels, seating, and a seamless sand-to-suite lifestyle.</p>
+          </article>
+
+          <article class="amenity-card reveal reveal-delay-2">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M4.5 12.5l3 3L12 10m6-2a7 7 0 11-14 0 7 7 0 0114 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M9 21h6"/></svg>
+            </div>
+            <h3 class="font-display text-xl mb-2" data-i18n="am.a3.t">Fitness Studio</h3>
+            <p class="text-sm leading-relaxed opacity-75" data-i18n="am.a3.d">A refined fitness area with ocean-facing equipment - train with the Pacific as your backdrop.</p>
+          </article>
+
+          <article class="amenity-card reveal">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2m-8 0h8m-8 0H6a2 2 0 00-2 2v9a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2h-2"/></svg>
+            </div>
+            <h3 class="font-display text-xl mb-2" data-i18n="am.a4.t">Secure Parking</h3>
+            <p class="text-sm leading-relaxed opacity-75" data-i18n="am.a4.d">Gated, assigned parking with controlled access for residents and guests.</p>
+          </article>
+
+          <article class="amenity-card reveal reveal-delay-1">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <h3 class="font-display text-xl mb-2" data-i18n="am.a5.t">Smart Home Features</h3>
+            <p class="text-sm leading-relaxed opacity-75" data-i18n="am.a5.d">Intelligent lighting, climate, and security controls - effortless comfort at your fingertips.</p>
+          </article>
+
+          <article class="amenity-card reveal reveal-delay-2">
+            <div class="amenity-icon" aria-hidden="true">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            <h3 class="font-display text-xl mb-2" data-i18n="am.a6.t">24/7 Security</h3>
+            <p class="text-sm leading-relaxed opacity-75" data-i18n="am.a6.d">Monitored access, cameras, and professional oversight for peace of mind day and night.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LOCATION & LIFESTYLE ========== -->
+    <section id="location" class="section-pad bg-ocean-950 text-white relative overflow-hidden">
+      <div class="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+        <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-ocean-500 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-champagne/30 blur-3xl"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div class="reveal">
+            <p class="section-eyebrow text-champagne-light" data-i18n="loc.eyebrow">Location & Lifestyle</p>
+            <h2 class="section-title text-white mb-4" data-i18n="loc.title">Why Playas?</h2>
+            <p class="text-white/75 text-lg leading-relaxed mb-8" data-i18n="loc.sub">
+              Playas (General Villamil) is Ecuador's beloved Pacific escape - warm waters, year-round sun, fresh seafood, and a relaxed coastal rhythm. Coastline Condos places you one block from the beach, with Guayaquil within easy reach.
+            </p>
+
+            <ul class="space-y-5">
+              <li class="loc-item">
+                <span class="loc-num">01</span>
+                <div>
+                  <h3 class="font-medium mb-1" data-i18n="loc.i1.t">One Block to the Beach</h3>
+                  <p class="text-sm text-white/65" data-i18n="loc.i1.d">Morning walks on the sand, afternoon surf sessions, evening strolls under coastal skies.</p>
+                </div>
+              </li>
+              <li class="loc-item">
+                <span class="loc-num">02</span>
+                <div>
+                  <h3 class="font-medium mb-1" data-i18n="loc.i2.t">Near Guayaquil</h3>
+                  <p class="text-sm text-white/65" data-i18n="loc.i2.d">International airport and metropolitan amenities approximately 1.5-2 hours away.</p>
+                </div>
+              </li>
+              <li class="loc-item">
+                <span class="loc-num">03</span>
+                <div>
+                  <h3 class="font-medium mb-1" data-i18n="loc.i3.t">Surf, Dining & Eco-Tours</h3>
+                  <p class="text-sm text-white/65" data-i18n="loc.i3.d">Local restaurants, markets, surfing breaks, and nature excursions along the Ecuadorian coast.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="reveal reveal-delay-2 space-y-6">
+            <!-- Google Map embed - Playas, Ecuador -->
+            <div class="map-frame rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+              <iframe
+                title="Map of Playas Ecuador near Coastline Condos"
+                src="https://maps.google.com/maps?q=Via%20Data%20Playas%20Ecuador&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="360"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <figure class="img-placeholder rounded-xl overflow-hidden aspect-[4/3]" data-label="Playas beach">
+                <img src="assets/images/playas-beach.jpg" alt="Pacific beach at Playas (General Villamil), Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              </figure>
+              <figure class="img-placeholder rounded-xl overflow-hidden aspect-[4/3]" data-label="Local dining">
+                <img src="assets/images/playas-dining.jpg" alt="Local restaurant on the coast in Playas, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GALLERY ========== -->
+    <section id="gallery" class="section-pad">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 reveal">
+          <div>
+            <p class="section-eyebrow" data-i18n="gal.eyebrow">Gallery</p>
+            <h2 class="section-title" data-i18n="gal.title">A visual journey to the coast</h2>
+          </div>
+          <a href="https://www.instagram.com/coastline_condos" target="_blank" rel="noopener noreferrer" class="btn-outline text-sm inline-flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            @coastline_condos
+          </a>
+        </div>
+
+        <!-- Masonry-style gallery — real Playas / Engabao photos (see assets/images/playas/CREDITS.md) -->
+        <div class="gallery-masonry" id="gallery-grid">
+          <button type="button" class="gallery-item tall reveal" data-src="assets/images/gallery-01.jpg" data-alt="Coastal landscape near Engabao, Playas canton, Ecuador" aria-label="Open gallery image 1">
+            <span class="img-placeholder absolute inset-0" data-label="Engabao coast">
+              <img src="assets/images/gallery-01.jpg" alt="Coastal landscape near Engabao, Playas canton, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+            </span>
+          </button>
+          <button type="button" class="gallery-item reveal reveal-delay-1" data-src="assets/images/gallery-02.jpg" data-alt="Malecón boardwalk in Playas, Ecuador" aria-label="Open gallery image 2">
+            <span class="img-placeholder absolute inset-0" data-label="Malecón">
+              <img src="assets/images/gallery-02.jpg" alt="Malecón boardwalk in Playas, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+            </span>
+          </button>
+          <button type="button" class="gallery-item reveal reveal-delay-2" data-src="assets/images/gallery-03.jpg" data-alt="Municipal market in Playas, Ecuador" aria-label="Open gallery image 3">
+            <span class="img-placeholder absolute inset-0" data-label="Market">
+              <img src="assets/images/gallery-03.jpg" alt="Municipal market in Playas, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+            </span>
+          </button>
+          <button type="button" class="gallery-item tall reveal" data-src="assets/images/gallery-04.jpg" data-alt="Beach at Engabao, Playas canton, Ecuador" aria-label="Open gallery image 4">
+            <span class="img-placeholder absolute inset-0" data-label="Engabao beach">
+              <img src="assets/images/gallery-04.jpg" alt="Beach at Engabao, Playas canton, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+            </span>
+          </button>
+          <button type="button" class="gallery-item reveal reveal-delay-1" data-src="assets/images/gallery-05.jpg" data-alt="Central plaza in Playas, Ecuador" aria-label="Open gallery image 5">
+            <span class="img-placeholder absolute inset-0" data-label="Plaza">
+              <img src="assets/images/gallery-05.jpg" alt="Central plaza in Playas, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+            </span>
+          </button>
+          <button type="button" class="gallery-item reveal reveal-delay-2" data-src="assets/images/gallery-06.jpg" data-alt="Fishing boats on the beach in Playas, Ecuador" aria-label="Open gallery image 6">
+            <span class="img-placeholder absolute inset-0" data-label="Fishing boats">
+              <img src="assets/images/gallery-06.jpg" alt="Fishing boats on the beach in Playas, Ecuador" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+            </span>
+          </button>
+        </div>
+
+        <!-- Instagram feed + live beach webcam -->
+        <div class="mt-14 grid md:grid-cols-2 gap-6 reveal">
+          <div class="ig-embed-placeholder rounded-2xl p-8 md:p-10 text-center border border-ocean-900/10 dark:border-white/10 bg-white/50 dark:bg-white/5">
+            <p class="font-display text-2xl mb-2" data-i18n="gal.ig">Follow the journey</p>
+            <p class="text-sm opacity-70 mb-6" data-i18n="gal.igsub">Instagram feed embed - replace with Elfsight, SnapWidget, or official IG embed for @coastline_condos</p>
+            <!-- REPLACE: Paste Instagram embed / widget here -->
+            <a href="https://www.instagram.com/coastline_condos" target="_blank" rel="noopener noreferrer" class="btn-primary">@coastline_condos</a>
+          </div>
+
+          <!-- Live webcam placeholder: swap the .webcam-screen div for your stream embed (YouTube Live / IP cam iframe) -->
+          <div class="rounded-2xl p-8 md:p-10 text-center border border-ocean-900/10 dark:border-white/10 bg-white/50 dark:bg-white/5">
+            <p class="font-display text-2xl mb-2 inline-flex items-center gap-2">
+              <span class="live-dot" aria-hidden="true"></span>
+              <span data-i18n="gal.live">Live from Playas</span>
+            </p>
+            <p class="text-sm opacity-70 mb-6" data-i18n="gal.livesub">Beach webcam — streaming soon. Meanwhile, follow daily construction stories on Instagram.</p>
+            <div class="webcam-screen rounded-xl" aria-hidden="true">
+              <span class="webcam-scan"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Image lightbox">
+      <button type="button" id="lightbox-close" class="lightbox-close" aria-label="Close lightbox">&times;</button>
+      <button type="button" id="lightbox-prev" class="lightbox-nav prev" aria-label="Previous image">&#8249;</button>
+      <img id="lightbox-img" src="" alt="" />
+      <button type="button" id="lightbox-next" class="lightbox-nav next" aria-label="Next image">&#8250;</button>
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+
+    <!-- ========== VIRTUAL TOUR ========== -->
+    <section id="tour" class="section-pad bg-white dark:bg-ocean-900/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="reveal">
+            <p class="section-eyebrow" data-i18n="tour.eyebrow">Virtual Experience</p>
+            <h2 class="section-title mb-4" data-i18n="tour.title">Experience the View</h2>
+            <p class="section-sub mb-8" data-i18n="tour.sub">
+              Step inside with a 360° walkthrough. Feel the light, the layout, and the horizon - before you ever set foot in Playas.
+            </p>
+            <ul class="space-y-3 text-sm opacity-80 mb-8">
+              <li class="flex gap-3"><span class="text-champagne">✓</span> <span data-i18n="tour.f1">360° unit walkthroughs (Matterport-ready)</span></li>
+              <li class="flex gap-3"><span class="text-champagne">✓</span> <span data-i18n="tour.f2">Drone views of the coastline</span></li>
+              <li class="flex gap-3"><span class="text-champagne">✓</span> <span data-i18n="tour.f3">Day-to-night ambient renderings</span></li>
+            </ul>
+            <a href="#contact" class="btn-primary" data-i18n="tour.cta">Request a Private Tour</a>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <!--
+              INTERACTIVE PANORAMA (drag to look around).
+              · Today: procedural Playas seascape drawn on canvas.
+              · With a real 360 photo: add data-pano-src="assets/images/pano.jpg" below.
+              · With Matterport: replace this whole .tour-placeholder block with your iframe.
+            -->
+            <div class="tour-placeholder rounded-2xl aspect-video relative overflow-hidden">
+              <div class="absolute inset-0 tour-bg" aria-hidden="true"></div>
+              <canvas id="pano-canvas" class="absolute inset-0 w-full h-full pano-canvas" aria-label="Interactive panorama of the Playas coastline"></canvas>
+              <p class="pano-hint" data-i18n="tour.drag">Drag to look around</p>
+              <p class="pano-note" data-i18n="tour.demo">Interactive demo panorama — your 360° tour embeds here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DESIGN STUDIO (live configurator) ========== -->
+    <section id="design" class="section-pad">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+          <p class="section-eyebrow" data-i18n="cfg.eyebrow">Design Studio</p>
+          <h2 class="section-title mb-4" data-i18n="cfg.title">Craft your residence</h2>
+          <p class="section-sub" data-i18n="cfg.sub">
+            Play interior designer — choose your palette, flooring, and level, and watch your future home respond in real time.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <!-- Live preview: recolors + view changes instantly via CSS variables -->
+          <div class="reveal">
+            <div id="cfg-preview" class="cfg-preview-frame">
+              <svg viewBox="0 0 400 260" class="w-full h-auto" role="img" aria-label="Stylized residence interior preview">
+                <defs>
+                  <linearGradient id="cfg-sky-g" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#7fb8d8"/><stop offset="1" stop-color="#f0d9ae"/>
+                  </linearGradient>
+                  <linearGradient id="cfg-sea-g" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#2678a8"/><stop offset="1" stop-color="#0c4a6e"/>
+                  </linearGradient>
+                </defs>
+                <!-- Walls & floor -->
+                <rect width="400" height="192" class="cfg-wall"/>
+                <rect y="192" width="400" height="68" class="cfg-floor"/>
+                <line x1="0" y1="192" x2="400" y2="192" stroke="rgba(10,37,64,0.15)"/>
+                <!-- Window with ocean view (sea height = floor level) -->
+                <rect x="208" y="28" width="154" height="129" class="cfg-frame"/>
+                <rect x="215" y="35" width="140" height="115" fill="url(#cfg-sky-g)"/>
+                <circle cx="252" cy="72" r="10" fill="#ffe6b8"/>
+                <rect id="cfg-sea" x="215" y="87" width="140" height="63" fill="url(#cfg-sea-g)"/>
+                <line x1="285" y1="35" x2="285" y2="150" stroke="rgba(255,255,255,0.45)"/>
+                <!-- Pendant lamp -->
+                <line x1="105" y1="0" x2="105" y2="42" stroke="rgba(10,37,64,0.35)"/>
+                <circle cx="105" cy="52" r="11" class="cfg-accent"/>
+                <!-- Sofa -->
+                <rect x="42" y="130" width="128" height="26" rx="10" class="cfg-sofa"/>
+                <rect x="38" y="150" width="136" height="36" rx="10" class="cfg-sofa"/>
+                <rect x="52" y="142" width="48" height="16" rx="6" class="cfg-accent" opacity="0.85"/>
+                <!-- Rug -->
+                <ellipse cx="106" cy="222" rx="86" ry="15" class="cfg-accent" opacity="0.22"/>
+                <!-- Plant -->
+                <rect x="368" y="196" width="18" height="20" rx="3" class="cfg-accent"/>
+                <path d="M377 196 q-14 -20 -4 -34 q6 12 8 20 q4 -16 12 -20 q4 18 -8 34 z" fill="#2e7d54"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="reveal reveal-delay-1 space-y-6">
+            <div>
+              <p class="cfg-label" data-i18n="cfg.unit">Residence</p>
+              <div class="cfg-group" id="cfg-unit-group">
+                <!-- Filled from inventory by experience.js -->
+              </div>
+            </div>
+            <div>
+              <p class="cfg-label" data-i18n="cfg.palette">Interior palette</p>
+              <div class="cfg-group">
+                <button type="button" class="cfg-opt" data-group="palette" data-value="p1" aria-pressed="false">
+                  <span class="cfg-dots"><i style="background:#f2ebdd"></i><i style="background:#c9b391"></i><i style="background:#c9a86c"></i></span>
+                  <span data-i18n="cfg.p1">Sand &amp; Linen</span>
+                </button>
+                <button type="button" class="cfg-opt" data-group="palette" data-value="p2" aria-pressed="false">
+                  <span class="cfg-dots"><i style="background:#e9f2f3"></i><i style="background:#7ea8b8"></i><i style="background:#2678a8"></i></span>
+                  <span data-i18n="cfg.p2">Ocean Breeze</span>
+                </button>
+                <button type="button" class="cfg-opt" data-group="palette" data-value="p3" aria-pressed="false">
+                  <span class="cfg-dots"><i style="background:#ddd8d0"></i><i style="background:#37475a"></i><i style="background:#a88b4a"></i></span>
+                  <span data-i18n="cfg.p3">Midnight Luxe</span>
+                </button>
+              </div>
+            </div>
+            <div>
+              <p class="cfg-label" data-i18n="cfg.flooring">Flooring</p>
+              <div class="cfg-group">
+                <button type="button" class="cfg-opt" data-group="flooring" data-value="fl1" aria-pressed="false">
+                  <span class="cfg-dots"><i style="background:#d9b98a"></i></span>
+                  <span data-i18n="cfg.fl1">Light Oak</span>
+                </button>
+                <button type="button" class="cfg-opt" data-group="flooring" data-value="fl2" aria-pressed="false">
+                  <span class="cfg-dots"><i style="background:#cfc8bc"></i></span>
+                  <span data-i18n="cfg.fl2">Coastal Stone</span>
+                </button>
+              </div>
+            </div>
+            <div>
+              <p class="cfg-label" data-i18n="cfg.level">Floor level</p>
+              <div class="cfg-group">
+                <button type="button" class="cfg-opt" data-group="level" data-value="1" aria-pressed="false" data-i18n="cfg.l1">Level 1</button>
+                <button type="button" class="cfg-opt" data-group="level" data-value="2" aria-pressed="false" data-i18n="cfg.l2">Level 2</button>
+                <button type="button" class="cfg-opt" data-group="level" data-value="3" aria-pressed="false" data-i18n="cfg.l3">Level 3</button>
+              </div>
+            </div>
+
+            <div class="cfg-summary glass-card p-5">
+              <p class="section-eyebrow" style="margin-bottom:.4rem" data-i18n="cfg.summary">Your concept</p>
+              <p id="cfg-summary-text" class="text-sm leading-relaxed"></p>
+              <button type="button" id="cfg-send" class="btn-primary mt-4" data-i18n="cfg.cta">Send My Design to the Team</button>
+              <p id="cfg-sent" class="form-success" hidden role="status" data-i18n="cfg.sent">Design added to your VIP registration below — finish and submit ↓</p>
+              <p class="text-xs opacity-60 mt-3" data-i18n="cfg.note">Selections are conceptual and help our team personalize your VIP preview.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BUYER JOURNEY ========== -->
+    <section id="journey" class="section-pad relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+          <p class="section-eyebrow" data-i18n="buy.eyebrow">Your Path Home</p>
+          <h2 class="section-title mb-4" data-i18n="buy.title">Your Coastal Sanctuary Awaits</h2>
+          <p class="section-sub" data-i18n="buy.sub">
+            A refined, personal journey from first preview to keys in hand - designed around your pace and vision.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 relative">
+          <div class="journey-line hidden md:block" aria-hidden="true"></div>
+
+          <article class="journey-card reveal">
+            <span class="journey-step">01</span>
+            <h3 class="font-display text-2xl mb-3" data-i18n="buy.s1.t">VIP Preview</h3>
+            <p class="text-sm leading-relaxed opacity-75" data-i18n="buy.s1.d">
+              Register for exclusive access to floor plans, pricing, and early selection of preferred residences and views.
+            </p>
+          </article>
+
+          <article class="journey-card reveal reveal-delay-1">
+            <span class="journey-step">02</span>
+            <h3 class="font-display text-2xl mb-3" data-i18n="buy.s2.t">Custom Selections</h3>
+            <p class="text-sm leading-relaxed opacity-75" data-i18n="buy.s2.d">
+              Personalize finishes, layouts where available, and design details with guidance from our concierge team.
+            </p>
+          </article>
+
+          <article class="journey-card reveal reveal-delay-2">
+            <span class="journey-step">03</span>
+            <h3 class="font-display text-2xl mb-3" data-i18n="buy.s3.t">Move-In Support</h3>
+            <p class="text-sm leading-relaxed opacity-75" data-i18n="buy.s3.d">
+              From closing coordination to welcome packages - we ensure a seamless transition into oceanfront living.
+            </p>
+          </article>
+        </div>
+
+        <div class="text-center mt-12 reveal">
+          <a href="#contact" class="btn-primary btn-lg" data-i18n="buy.cta">Begin Your Journey</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT / WHY CHOOSE US ========== -->
+    <section id="about" class="section-pad bg-ocean-950 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+          <div class="reveal">
+            <p class="section-eyebrow text-champagne-light" data-i18n="about.eyebrow">Why Coastline</p>
+            <h2 class="section-title text-white mb-6" data-i18n="about.title">Built for lasting coastal beauty</h2>
+            <p class="text-white/75 leading-relaxed mb-6" data-i18n="about.p1">
+              Coastline Condos is developed with a commitment to quality craftsmanship, climate-conscious design, and the quiet luxury that defines true beach living. We build not just residences - but legacies by the sea.
+            </p>
+            <p class="text-white/75 leading-relaxed mb-8" data-i18n="about.p2">
+              Our standards include durable coastal materials, energy-efficient systems, and architecture that frames the Pacific without overwhelming the landscape. Sustainability and sophistication, hand in hand.
+            </p>
+            <div class="grid sm:grid-cols-3 gap-6">
+              <div>
+                <p class="font-display text-3xl text-champagne mb-1">Eco</p>
+                <p class="text-xs uppercase tracking-wider text-white/50" data-i18n="about.s1">Coastal design</p>
+              </div>
+              <div>
+                <p class="font-display text-3xl text-champagne mb-1">VIP</p>
+                <p class="text-xs uppercase tracking-wider text-white/50" data-i18n="about.s2">Buyer care</p>
+              </div>
+              <div>
+                <p class="font-display text-3xl text-champagne mb-1">∞</p>
+                <p class="text-xs uppercase tracking-wider text-white/50" data-i18n="about.s3">Ocean horizons</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal reveal-delay-2 space-y-6">
+            <blockquote class="testimonial">
+              <p class="font-display text-xl sm:text-2xl italic leading-relaxed mb-4" data-i18n="about.t1.q">
+                "Waking up to that view every morning feels like a permanent vacation - with all the comforts of home."
+              </p>
+              <footer class="text-sm text-champagne" data-i18n="about.t1.a">- Future Resident, VIP Preview Guest</footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p class="font-display text-xl sm:text-2xl italic leading-relaxed mb-4" data-i18n="about.t2.q">
+                "The attention to detail and the boutique scale made all the difference. This is how coastal living should feel."
+              </p>
+              <footer class="text-sm text-champagne" data-i18n="about.t2.a">- Design Consultant Review</footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="section-pad">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          <div class="reveal">
+            <p class="section-eyebrow" data-i18n="contact.eyebrow">Contact</p>
+            <h2 class="section-title mb-4" data-i18n="contact.title">Register for VIP Access</h2>
+            <p class="section-sub mb-8" data-i18n="contact.sub">
+              Be first to receive floor plans, pricing, and private preview invitations. Our team responds within one business day.
+            </p>
+            <div class="space-y-4 text-sm">
+              <p class="flex items-center gap-3">
+                <span class="text-champagne" aria-hidden="true">&#9679;</span>
+                <span data-i18n="contact.addr">Km 5 Vía Data, Playas (General Villamil), Ecuador · Vista al mar</span>
+              </p>
+              <p class="flex items-center gap-3">
+                <span class="text-champagne" aria-hidden="true">&#9679;</span>
+                <a href="https://wa.me/593969943941" class="hover:text-ocean-600 dark:hover:text-ocean-300 transition-colors">WhatsApp · +593 96 994 3941</a>
+              </p>
+              <p class="flex items-center gap-3">
+                <span class="text-champagne" aria-hidden="true">&#9679;</span>
+                <a href="https://wa.me/593994843667" class="hover:text-ocean-600 dark:hover:text-ocean-300 transition-colors">WhatsApp · +593 99 484 3667</a>
+              </p>
+              <p class="flex items-center gap-3">
+                <span class="text-champagne" aria-hidden="true">&#9679;</span>
+                <a href="mailto:hello@coastlinecondos.ec" class="hover:text-ocean-600 dark:hover:text-ocean-300 transition-colors">hello@coastlinecondos.ec</a>
+              </p>
+              <p class="flex items-center gap-3">
+                <span class="text-champagne" aria-hidden="true">&#9679;</span>
+                <a href="https://www.instagram.com/coastline_condos" target="_blank" rel="noopener noreferrer" class="hover:text-ocean-600 dark:hover:text-ocean-300 transition-colors">@coastline_condos</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="reveal reveal-delay-1">
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div class="form-group sm:col-span-2">
+                  <label for="name" data-i18n="form.name">Full name</label>
+                  <input type="text" id="name" name="name" required autocomplete="name" aria-required="true" />
+                </div>
+                <div class="form-group">
+                  <label for="email" data-i18n="form.email">Email</label>
+                  <input type="email" id="email" name="email" required autocomplete="email" aria-required="true" />
+                </div>
+                <div class="form-group">
+                  <label for="phone" data-i18n="form.phone">Phone / WhatsApp</label>
+                  <input type="tel" id="phone" name="phone" required autocomplete="tel" aria-required="true" />
+                </div>
+                <div class="form-group sm:col-span-2">
+                  <label for="unit" data-i18n="form.unit">Interested unit</label>
+                  <select id="unit" name="unit">
+                    <option value="" data-i18n="form.unitAny">Not sure yet / Any</option>
+                    <!-- Options filled from inventory -->
+                  </select>
+                </div>
+                <div class="form-group sm:col-span-2">
+                  <label for="message" data-i18n="form.message">Message (optional)</label>
+                  <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn-primary w-full mt-2" data-i18n="form.submit">Submit VIP Registration</button>
+              <p id="form-success" class="form-success" hidden role="status" data-i18n="form.success">
+                Thank you! Your VIP registration has been received. We'll be in touch shortly.
+              </p>
+              <p id="form-error" class="form-error" hidden role="alert" data-i18n="form.error">
+                Please complete all required fields with a valid email.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== QUIZ MODAL — Find Your Perfect Unit ========== -->
+  <div id="quiz-modal" class="quiz-modal" hidden role="dialog" aria-modal="true" aria-labelledby="quiz-title">
+    <div class="quiz-panel">
+      <div class="flex items-start justify-between gap-4 mb-4">
+        <div>
+          <p class="section-eyebrow" style="margin-bottom:.25rem" data-i18n="quiz.eyebrow">60-Second Match</p>
+          <h2 id="quiz-title" class="font-display text-2xl md:text-3xl" data-i18n="quiz.title">Find your perfect residence</h2>
+        </div>
+        <button type="button" id="quiz-close" class="icon-btn" aria-label="Close quiz">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="quiz-body"><!-- steps rendered by js/experience.js --></div>
+    </div>
+  </div>
+
+  <!-- ========== CONCIERGE CHAT (WhatsApp hand-off) ========== -->
+  <div id="chat-widget" class="chat-widget">
+    <div id="chat-panel" class="chat-panel" role="dialog" aria-label="Coastline concierge chat">
+      <div class="chat-header">
+        <div>
+          <p class="chat-title" data-i18n="chat.title">Coastline Concierge</p>
+          <p class="chat-sub"><span class="live-dot" aria-hidden="true"></span> <span data-i18n="chat.sub">Replies in minutes on WhatsApp</span></p>
+        </div>
+        <button type="button" id="chat-close" class="chat-x" aria-label="Close chat">&times;</button>
+      </div>
+      <div id="chat-log" class="chat-log" aria-live="polite"></div>
+      <div id="chat-topics" class="chat-topics"><!-- topic buttons rendered by js/experience.js --></div>
+      <a id="chat-wa" href="https://wa.me/593969943941" target="_blank" rel="noopener noreferrer" class="btn-primary chat-wa-btn" data-i18n="chat.wa">Continue on WhatsApp</a>
+    </div>
+    <button type="button" id="chat-fab" class="chat-fab" aria-expanded="false" aria-label="Chat with our concierge">
+      <svg class="chat-fab-open w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h8m-8 4h5m-9 6l2.4-3.2A8 8 0 1 1 12 20H6z"/>
+      </svg>
+      <svg class="chat-fab-close w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer bg-ocean-950 text-white/80 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div class="lg:col-span-2">
+          <a href="#home" class="inline-block" aria-label="Coastline Condos Home">
+            <img class="footer-logo" src="assets/brand/coastline-logo-stacked-reversed.svg" alt="Coastline Condos" width="300" height="300" />
+          </a>
+          <p class="text-sm text-white/60 max-w-md leading-relaxed mt-3" data-i18n="footer.tagline">
+            Oceanfront Living, Elevated. Premium 3-story ocean-view residences one block from the beach in Playas, Ecuador.
+          </p>
+          <div class="flex gap-3 mt-6">
+            <a href="https://www.instagram.com/coastline_condos" target="_blank" rel="noopener noreferrer" class="icon-btn-footer" aria-label="Instagram">IG</a>
+            <a href="https://wa.me/593969943941" target="_blank" rel="noopener noreferrer" class="icon-btn-footer" aria-label="WhatsApp">WA</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-white text-sm tracking-widest uppercase mb-4" data-i18n="footer.explore">Explore</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#residences" class="footer-link" data-i18n="nav.residences">Residences</a></li>
+            <li><a href="#amenities" class="footer-link" data-i18n="nav.amenities">Amenities</a></li>
+            <li><a href="#location" class="footer-link" data-i18n="nav.location">Location</a></li>
+            <li><a href="#gallery" class="footer-link" data-i18n="nav.gallery">Gallery</a></li>
+            <li><a href="#tour" class="footer-link" data-i18n="nav.tour">Virtual Tour</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white text-sm tracking-widest uppercase mb-4" data-i18n="footer.legal">Legal</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="footer-link" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="#" class="footer-link" data-i18n="footer.terms">Terms of Use</a></li>
+            <li><a href="#" class="footer-link" data-i18n="footer.disclaimer">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between gap-4 text-xs text-white/40">
+        <p data-i18n="footer.copy">&copy; 2026 Coastline Condos. All rights reserved.
+          <button type="button" id="pwa-install" class="pwa-install-btn" hidden data-i18n="pwa.install">Install App</button>
+        </p>
+        <p data-i18n="footer.note">Unit renderings may be conceptual. Lifestyle photos of Playas include free Wikimedia Commons imagery — full credits in assets/images/playas/CREDITS.md. Specs subject to change.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile CTA -->
+  <div class="sticky-cta md:hidden" id="sticky-cta">
+    <a href="#contact" class="btn-primary w-full text-center text-sm" data-i18n="hero.cta1">Register for VIP Access</a>
+  </div>
+
+  <!--
+    Script order matters:
+    1. inventory   — unit master data (must load first)
+    2. i18n-extra  — registers new EN/ES strings (must load before main.js)
+    3. main.js     — core: i18n, theme, nav, gallery, forms, inventory UI
+    4. floorplan   — interactive 2D + 2.5D plan viewer
+    5. effects.js  — ocean canvas, panorama, micro-interactions
+    6. experience  — quiz, design studio, concierge chat, PWA
+    7. building3d  — multi-unit 3D explorer (lazy-loads Three.js)
+  -->
+  <!-- Password gate first (client preview) — remove before public launch -->
+  <script src="js/preview-gate.js"></script>
+  <script src="js/inventory.js" defer></script>
+  <script src="js/i18n-extra.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/floorplan.js" defer></script>
+  <script src="js/effects.js" defer></script>
+  <script src="js/experience.js" defer></script>
+  <script src="js/building3d.js" defer></script>
+</body>
+</html>

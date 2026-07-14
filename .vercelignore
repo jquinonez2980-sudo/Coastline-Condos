@@ -1,0 +1,10 @@
+# Exclude raw source media only — keep site assets + 3d-model
+# Leading slash = root folder only (do NOT match assets/videos)
+/videos/
+/images for 3D/
+/layout diagram/
+/website_handoff/
+/pictures/
+*.mov
+.git/
+.grok/

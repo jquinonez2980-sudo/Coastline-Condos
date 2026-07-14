@@ -1,0 +1,9 @@
+.vercel
+
+# Raw source media — not used by the deployed site, too large for GitHub
+/videos/
+/images for 3D/
+/layout diagram/
+/website_handoff/
+/pictures/
+*.mov

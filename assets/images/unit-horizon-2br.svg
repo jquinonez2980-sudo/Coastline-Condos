@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0a2540"/>
+      <stop offset="50%" stop-color="#0c4a6e"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="980" cy="160" r="70" fill="#e8d5a8" opacity="0.55"/>
+  <path d="M0 500 Q280 430 600 500 T1200 490 V800 H0 Z" fill="#075985" opacity="0.45"/>
+  <path d="M0 560 Q400 510 800 570 T1200 550 V800 H0 Z" fill="#075985" opacity="0.55"/>
+  <text x="600" y="380" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="Georgia, serif" font-size="32" letter-spacing="4">THE HORIZON</text>
+  <text x="600" y="430" text-anchor="middle" fill="rgba(232,213,168,0.8)" font-family="system-ui,sans-serif" font-size="13" letter-spacing="3">2 BEDROOM CORNER</text>
+</svg>
