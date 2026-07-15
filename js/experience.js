@@ -1,7 +1,7 @@
 /**
  * Coastline Condos — Experience layer
  * "Find Your Perfect Unit" quiz · Residence Design Studio (configurator) ·
- * Concierge chat (WhatsApp hand-off) · PWA install + service worker
+ * Esmi AI concierge chat · PWA install + service worker
  *
  * Quiz & configurator use unit numbers from js/inventory.js.
  */
@@ -406,107 +406,306 @@
   }
 
   /* ========================================================================
-     3) CONCIERGE CHAT
+     3) ESMI AI CONCIERGE CHAT
      ======================================================================== */
-  const CHAT = {
-    en: {
-      greeting: "Hola! 🌊 I'm the Coastline concierge. What would you like to know?",
-      topics: [
-        [
-          'Pricing & availability',
-          'Available residences start from $90,000 (2BR units 101, 102, 201, 202). Unit 103 is a 3BR from $120,000. 203 is conditionally sold; 301 and 302 are sold. Register for VIP access for full details.',
-        ],
-        [
-          'Location & getting there',
-          "We're at Km 5 Vía Data in Playas (General Villamil), one block from the beach — about 1.5–2 hours from Guayaquil's international airport.",
-        ],
-        [
-          'Tours & visits',
-          'We offer private on-site visits and video tours for international buyers. Tell us your dates and we\'ll arrange everything.',
-        ],
-        [
-          'Payment plans',
-          'Flexible pre-construction payment schedules are available, including staged payments during construction. Our team can tailor a plan to you.',
-        ],
-      ],
-      waIntro: "Hello Coastline Condos! I'm interested in",
-    },
-    es: {
-      greeting: '¡Hola! 🌊 Soy el concierge de Coastline. ¿Qué te gustaría saber?',
-      topics: [
-        [
-          'Precios y disponibilidad',
-          'Las residencias disponibles empiezan desde $90,000 (unidades 2 dorm. 101, 102, 201, 202). La 103 es 3 dorm. desde $120,000. La 203 está en venta condicional; 301 y 302 están vendidas. Regístrate para acceso VIP y te damos el detalle completo.',
-        ],
-        [
-          'Ubicación y cómo llegar',
-          'Estamos en el Km 5 Vía Data en Playas (General Villamil), a una cuadra de la playa — a 1.5–2 horas del aeropuerto internacional de Guayaquil.',
-        ],
-        [
-          'Tours y visitas',
-          'Ofrecemos visitas privadas en sitio y tours por video para compradores internacionales. Cuéntanos tus fechas y coordinamos todo.',
-        ],
-        [
-          'Planes de pago',
-          'Hay planes de pago flexibles en preventa, incluyendo pagos por etapas durante la construcción. Nuestro equipo puede armar un plan a tu medida.',
-        ],
-      ],
-      waIntro: '¡Hola Coastline Condos! Me interesa',
-    },
+  const CHAT_API = '/api/chat';
+  const THREAD_KEY = 'esmi-thread-id:coastline-condos';
+  const MSGS_PREFIX = 'esmi-messages-';
+
+  const QUICK = {
+    en: [
+      { label: 'Pricing & availability', value: 'What residences are available and how much do they cost?' },
+      { label: 'Location', value: 'Where is Coastline Condos and how do I get there from Guayaquil?' },
+      { label: 'Book a tour', value: 'I would like to book a private tour or video visit.' },
+      { label: 'Payment plans', value: 'Do you offer payment plans for pre-construction?' },
+    ],
+    es: [
+      { label: 'Precios y disponibilidad', value: '¿Qué residencias están disponibles y cuánto cuestan?' },
+      { label: 'Ubicación', value: '¿Dónde está Coastline Condos y cómo llego desde Guayaquil?' },
+      { label: 'Agendar un tour', value: 'Quiero agendar una visita privada o un tour por video.' },
+      { label: 'Planes de pago', value: '¿Ofrecen planes de pago en preventa?' },
+    ],
   };
+
+  function uid() {
+    try {
+      return crypto.randomUUID();
+    } catch {
+      return Math.random().toString(36).slice(2) + Date.now().toString(36);
+    }
+  }
+
+  function getThreadId() {
+    try {
+      const stored = localStorage.getItem(THREAD_KEY);
+      if (stored) return stored;
+      const id = uid();
+      localStorage.setItem(THREAD_KEY, id);
+      return id;
+    } catch {
+      return uid();
+    }
+  }
+
+  function loadMessages(threadId) {
+    try {
+      const raw = localStorage.getItem(MSGS_PREFIX + threadId);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) && parsed.length ? parsed : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function saveMessages(threadId, messages) {
+    try {
+      localStorage.setItem(MSGS_PREFIX + threadId, JSON.stringify(messages.slice(-30)));
+    } catch { /* quota / private mode */ }
+  }
 
   function initChat() {
     const fab = $('#chat-fab');
     const panel = $('#chat-panel');
     if (!fab || !panel) return;
+
     const log = $('#chat-log');
     const topicsEl = $('#chat-topics');
+    const form = $('#chat-form');
+    const input = $('#chat-input');
+    const sendBtn = $('#chat-send');
     const waLink = $('#chat-wa');
-    let lastTopic = '';
+    const resetBtn = $('#chat-reset');
 
-    function bubble(text, who) {
-      const div = document.createElement('div');
-      div.className = 'chat-bubble ' + who;
-      div.textContent = text;
-      log.appendChild(div);
-      log.scrollTop = log.scrollHeight;
+    let threadId = getThreadId();
+    let messages = [];
+    let loading = false;
+    let greeted = false;
+
+    function greetingText() {
+      return t('chat.greeting');
+    }
+
+    function scrollLog() {
+      if (log) log.scrollTop = log.scrollHeight;
+    }
+
+    function renderMessages() {
+      if (!log) return;
+      log.innerHTML = '';
+      messages.forEach((m) => {
+        const div = document.createElement('div');
+        div.className = 'chat-bubble ' + (m.role === 'user' ? 'user' : 'bot');
+        if (m.typing) {
+          div.classList.add('is-typing');
+          div.innerHTML = '<span class="chat-typing" aria-hidden="true"><span></span><span></span><span></span></span>';
+        } else {
+          div.textContent = m.content;
+        }
+        log.appendChild(div);
+      });
+      scrollLog();
+    }
+
+    function persist() {
+      saveMessages(
+        threadId,
+        messages.filter((m) => !m.typing).map((m) => ({ role: m.role, content: m.content }))
+      );
+    }
+
+    function setLoading(on) {
+      loading = on;
+      if (input) input.disabled = on;
+      if (sendBtn) sendBtn.disabled = on;
+    }
+
+    function hideTopics() {
+      if (topicsEl) {
+        topicsEl.hidden = true;
+        topicsEl.innerHTML = '';
+      }
     }
 
     function renderTopics() {
-      const data = CHAT[getLang()] || CHAT.en;
       if (!topicsEl) return;
+      const hasUser = messages.some((m) => m.role === 'user');
+      if (hasUser || loading) {
+        hideTopics();
+        return;
+      }
+      const items = QUICK[getLang()] || QUICK.en;
+      topicsEl.hidden = false;
       topicsEl.innerHTML = '';
-      data.topics.forEach(([label, answer]) => {
+      items.forEach((item) => {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'chat-topic';
-        btn.textContent = label;
-        btn.addEventListener('click', () => {
-          bubble(label, 'user');
-          lastTopic = label;
-          setTimeout(() => bubble(answer, 'bot'), 350);
-          if (waLink) {
-            const intro = data.waIntro;
-            waLink.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(intro + ' ' + label)}`;
-          }
-        });
+        btn.textContent = item.label;
+        btn.addEventListener('click', () => sendMessage(item.value));
         topicsEl.appendChild(btn);
       });
     }
 
-    let greeted = false;
+    function applyPlaceholders() {
+      if (input) input.placeholder = t('chat.placeholder');
+      if (sendBtn) sendBtn.setAttribute('aria-label', t('chat.send'));
+      if (resetBtn) {
+        resetBtn.setAttribute('aria-label', t('chat.reset'));
+        resetBtn.setAttribute('title', t('chat.reset'));
+      }
+      fab.setAttribute('aria-label', t('chat.open'));
+      if (waLink) {
+        const intro =
+          getLang() === 'es'
+            ? '¡Hola Coastline Condos! Me interesa el proyecto.'
+            : "Hello Coastline Condos! I'm interested in the project.";
+        waLink.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(intro)}`;
+      }
+    }
+
+    async function sendMessage(text) {
+      const trimmed = (text || '').trim();
+      if (!trimmed || loading) return;
+
+      hideTopics();
+      messages.push({ role: 'user', content: trimmed });
+      messages.push({ role: 'assistant', content: '', typing: true });
+      renderMessages();
+      setLoading(true);
+      if (input) {
+        input.value = '';
+        input.style.height = 'auto';
+      }
+
+      const assistantIdx = messages.length - 1;
+
+      try {
+        const res = await fetch(CHAT_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: trimmed,
+            thread_id: threadId,
+            tenant_id: 'coastline-condos',
+          }),
+        });
+
+        if (!res.ok || !res.body) throw new Error('bad response');
+
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let gotToken = false;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop() ?? '';
+
+          for (const line of lines) {
+            if (!line.startsWith('data: ')) continue;
+            let evt;
+            try {
+              evt = JSON.parse(line.slice(6));
+            } catch {
+              continue;
+            }
+
+            if (evt.type === 'token' && typeof evt.content === 'string') {
+              if (!gotToken) {
+                messages[assistantIdx] = { role: 'assistant', content: '' };
+                gotToken = true;
+              }
+              messages[assistantIdx].content += evt.content;
+              renderMessages();
+            } else if (evt.type === 'tool_start') {
+              if (!gotToken) {
+                messages[assistantIdx] = {
+                  role: 'assistant',
+                  content: t('chat.thinking'),
+                  typing: false,
+                };
+                renderMessages();
+              }
+            } else if (evt.type === 'done') {
+              const full = typeof evt.full_text === 'string' ? evt.full_text : messages[assistantIdx].content;
+              messages[assistantIdx] = { role: 'assistant', content: full || t('chat.error') };
+              renderMessages();
+            } else if (evt.type === 'error') {
+              messages[assistantIdx] = {
+                role: 'assistant',
+                content: evt.message || t('chat.error'),
+              };
+              renderMessages();
+            }
+          }
+        }
+
+        if (messages[assistantIdx].typing || !messages[assistantIdx].content) {
+          messages[assistantIdx] = { role: 'assistant', content: t('chat.error') };
+          renderMessages();
+        }
+      } catch {
+        messages[assistantIdx] = { role: 'assistant', content: t('chat.error') };
+        renderMessages();
+      } finally {
+        setLoading(false);
+        persist();
+        renderTopics();
+        input && input.focus();
+      }
+    }
+
+    function seedWelcome(force) {
+      if (!force) {
+        const saved = loadMessages(threadId);
+        if (saved && saved.length) {
+          messages = saved;
+          greeted = true;
+          renderMessages();
+          renderTopics();
+          return;
+        }
+      }
+      messages = [{ role: 'assistant', content: greetingText() }];
+      greeted = true;
+      renderMessages();
+      persist();
+      renderTopics();
+    }
+
+    function resetConversation() {
+      try {
+        localStorage.removeItem(MSGS_PREFIX + threadId);
+      } catch { /* ok */ }
+      threadId = uid();
+      try {
+        localStorage.setItem(THREAD_KEY, threadId);
+      } catch { /* ok */ }
+      seedWelcome(true);
+      input && input.focus();
+    }
+
     const open = () => {
       panel.classList.add('is-open');
       panel.removeAttribute('hidden');
+      fab.classList.add('is-open');
       fab.setAttribute('aria-expanded', 'true');
-      if (!greeted) {
-        bubble((CHAT[getLang()] || CHAT.en).greeting, 'bot');
-        greeted = true;
+      applyPlaceholders();
+      if (!greeted) seedWelcome(false);
+      else {
+        renderMessages();
+        renderTopics();
       }
-      renderTopics();
+      setTimeout(() => input && input.focus(), 200);
     };
+
     const close = () => {
       panel.classList.remove('is-open');
+      fab.classList.remove('is-open');
       fab.setAttribute('aria-expanded', 'false');
       setTimeout(() => panel.setAttribute('hidden', ''), 300);
     };
@@ -515,11 +714,42 @@
       if (panel.classList.contains('is-open')) close();
       else open();
     });
+
     const closeBtn = $('#chat-close');
     closeBtn && closeBtn.addEventListener('click', close);
+    resetBtn && resetBtn.addEventListener('click', resetConversation);
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        sendMessage(input ? input.value : '');
+      });
+    }
+
+    if (input) {
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage(input.value);
+        }
+      });
+      input.addEventListener('input', () => {
+        input.style.height = 'auto';
+        input.style.height = Math.min(input.scrollHeight, 88) + 'px';
+      });
+    }
+
     document.addEventListener('cc:langchange', () => {
+      applyPlaceholders();
+      if (!messages.some((m) => m.role === 'user')) {
+        messages = [{ role: 'assistant', content: greetingText() }];
+        persist();
+        if (panel.classList.contains('is-open')) renderMessages();
+      }
       if (panel.classList.contains('is-open')) renderTopics();
     });
+
+    applyPlaceholders();
   }
 
   /* ========================================================================

@@ -64,11 +64,18 @@ window.CC_I18N_EXTRA = {
     'quiz.cta2': 'Register for VIP Access',
     'quiz.restart': 'Start over',
 
-    /* Concierge chat */
-    'chat.open': 'Chat with our concierge',
-    'chat.title': 'Coastline Concierge',
-    'chat.sub': 'Replies in minutes on WhatsApp',
-    'chat.wa': 'Continue on WhatsApp',
+    /* Esmi AI concierge */
+    'chat.open': 'Chat with Esmi',
+    'chat.title': 'Esmi',
+    'chat.brand': 'AI Concierge',
+    'chat.sub': 'Online · Coastline Condos',
+    'chat.wa': 'Prefer WhatsApp? Message sales',
+    'chat.placeholder': 'Ask about residences, pricing, or tours…',
+    'chat.send': 'Send message',
+    'chat.reset': 'New chat',
+    'chat.greeting': "Hi! I'm Esmi, your AI concierge for Coastline Condos. I can help with residences, pricing, availability, and booking a tour. How can I help?",
+    'chat.error': 'Connection error — please try again, or message us on WhatsApp.',
+    'chat.thinking': 'Looking that up…',
 
     /* Gallery live */
     'gal.live': 'Live from Playas',
@@ -138,10 +145,17 @@ window.CC_I18N_EXTRA = {
     'quiz.cta2': 'Regístrate para Acceso VIP',
     'quiz.restart': 'Empezar de nuevo',
 
-    'chat.open': 'Habla con nuestro concierge',
-    'chat.title': 'Concierge Coastline',
-    'chat.sub': 'Responde en minutos por WhatsApp',
-    'chat.wa': 'Continuar en WhatsApp',
+    'chat.open': 'Habla con Esmi',
+    'chat.title': 'Esmi',
+    'chat.brand': 'Concierge IA',
+    'chat.sub': 'En línea · Coastline Condos',
+    'chat.wa': '¿Prefieres WhatsApp? Escribe a ventas',
+    'chat.placeholder': 'Pregunta por residencias, precios o tours…',
+    'chat.send': 'Enviar mensaje',
+    'chat.reset': 'Chat nuevo',
+    'chat.greeting': '¡Hola! Soy Esmi, tu concierge de IA de Coastline Condos. Puedo ayudarte con residencias, precios, disponibilidad y agendar un tour. ¿En qué te ayudo?',
+    'chat.error': 'Error de conexión — inténtalo de nuevo, o escríbenos por WhatsApp.',
+    'chat.thinking': 'Buscando información…',
 
     'gal.live': 'En Vivo desde Playas',
     'gal.livesub': 'Webcam de la playa — muy pronto. Mientras tanto, sigue el avance diario de obra en Instagram.',

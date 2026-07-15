@@ -52,7 +52,8 @@ Then visit `http://localhost:8080` — or just run `start.bat`.
   into the VIP contact form
 - **"Find Your Perfect Unit" quiz** — 60-second match that recommends a residence and
   pre-fills the form
-- **Concierge chat** — canned bilingual Q&A with WhatsApp deep-link hand-off
+- **Esmi AI concierge** — live bilingual chat (SSE) powered by the Esmi AI receptionist,
+  with Esmi logo branding and WhatsApp hand-off for sales
 - **Drag-to-look panorama** — procedural Playas seascape; drop in a real 360 photo via
   `data-pano-src`, or replace the block with a Matterport iframe
 - **Count-up stats strip, scroll progress, magnetic buttons, 3D tilt cards, cursor aura**
@@ -65,11 +66,16 @@ Then visit `http://localhost:8080` — or just run `start.bat`.
 2. **Contact** — WhatsApp numbers/email/IG in `index.html`; chat number in `js/experience.js` (`WHATSAPP`).
 3. **Copy** — core strings in `js/main.js` (`i18n`); experience-layer strings in `js/i18n-extra.js`;
    quiz/chat content in `js/experience.js`.
-4. **Form backend** — in `js/main.js`, replace the `localStorage` lead save with a `fetch()`
+4. **Esmi chat (Vercel env)** — set on the Coastline Vercel project:
+   - `ESMI_API_URL` = Railway Esmi URL (default is production `-5375`)
+   - `CHAT_PROXY_SECRET` = same secret as Railway `CHAT_PROXY_SECRET`
+   - `ESMI_TENANT_ID` = `coastline-condos` (optional; proxy already defaults to this)
+   Backend tenant lives in the `ai-receptionist` repo under `tenants/coastline-condos/`.
+5. **Form backend** — in `js/main.js`, replace the `localStorage` lead save with a `fetch()`
    to Formspree, Netlify Forms, or your CRM.
-5. **3D model** — `js/building3d.js` builds the model procedurally; swap in a real `.glb`
+6. **3D model** — `js/building3d.js` builds the model procedurally; swap in a real `.glb`
    (instructions in the file header).
-6. **Deploy** — any static host (Netlify / Vercel / Cloudflare Pages). After each deploy,
+7. **Deploy** — Vercel (required for `/api/chat` proxy). After each deploy,
    bump `CACHE_VERSION` in `sw.js` so returning visitors get the new files.
 
 ## Stack

@@ -4,7 +4,7 @@
  * same-origin GET requests (instant repeat visits + offline resilience).
  * Bump CACHE_VERSION whenever you ship changes, so clients refresh.
  */
-const CACHE_VERSION = 'coastline-v10-mobile-video';
+const CACHE_VERSION = 'coastline-v11-esmi-chat';
 const SHELL = [
   './',
   './index.html',

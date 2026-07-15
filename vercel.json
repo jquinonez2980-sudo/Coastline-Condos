@@ -9,6 +9,12 @@
       "main": true
     }
   },
+  "functions": {
+    "api/chat.js": {
+      "maxDuration": 60,
+      "memory": 256
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
