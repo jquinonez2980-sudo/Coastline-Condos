@@ -632,8 +632,9 @@
   }
 
   /* ========================================================================
-     Hero video — mobile = poster only (kills ~1–7MB from mobile PSI payload).
-     Desktop loads a compressed clip after idle so LCP stays the poster image.
+     Hero video — starts only after load + idle so LCP stays the poster image.
+     Mobile gets the ~0.9MB ocean-hero-mobile.mp4, desktop the full clip;
+     save-data / 2G / reduced-motion users keep the static poster.
      ======================================================================== */
   function initHeroVideo() {
     const video = $('#hero-video');
@@ -658,10 +659,10 @@
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isNarrow = window.matchMedia('(max-width: 900px)').matches;
     const isCoarse = window.matchMedia('(pointer: coarse)').matches;
-    // Lighthouse mobile + real phones: never auto-fetch video (payload / TBT / SI)
     const isMobile = isNarrow || isCoarse;
 
-    if (isMobile || saveData || slowNet || reduceMotion) {
+    // Data-saver / 2G / reduced-motion: static poster only, never fetch video
+    if (saveData || slowNet || reduceMotion) {
       video.removeAttribute('src');
       video.removeAttribute('autoplay');
       video.preload = 'none';
@@ -669,11 +670,15 @@
       return;
     }
 
+    // Phones get the compressed ~0.9MB clip; desktop the full one. Both start
+    // only after load + idle, so LCP stays the poster image (PSI-safe).
+    const videoSrc = isMobile ? 'assets/videos/ocean-hero-mobile.mp4' : 'assets/videos/ocean-hero.mp4';
+
     const startVideo = () => {
       if (video.getAttribute('data-src-set') === '1') return;
       video.setAttribute('data-src-set', '1');
       video.preload = 'metadata';
-      video.src = 'assets/videos/ocean-hero.mp4';
+      video.src = videoSrc;
       video.load();
       const p = video.play();
       if (p && typeof p.catch === 'function') {
