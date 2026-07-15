@@ -138,11 +138,11 @@
       'about.s2': 'Buyer care',
       'about.s3': 'Ocean horizons',
       'about.t1.q':
-        '“Waking up to that view every morning feels like a permanent vacation — with all the comforts of home.”',
-      'about.t1.a': '— Future Resident, VIP Preview Guest',
+        'Two of the eight residences are already sold — buyers chose Coastline before the first public listing.',
+      'about.t1.a': '2 of 8 sold · 1 reserved',
       'about.t2.q':
-        '“The attention to detail and the boutique scale made all the difference. This is how coastal living should feel.”',
-      'about.t2.a': '— Design Consultant Review',
+        'A boutique building of just eight homes on three floors, one block from the sand at Km 5 Vía Data.',
+      'about.t2.a': '8 residences · 3 floors · 1 block to the beach',
 
       'contact.eyebrow': 'Contact',
       'contact.title': 'Register for VIP Access',
@@ -302,11 +302,11 @@
       'about.s2': 'Atención al comprador',
       'about.s3': 'Horizontes oceánicos',
       'about.t1.q':
-        '“Despertar con esa vista cada mañana se siente como vacaciones permanentes — con todas las comodidades del hogar.”',
-      'about.t1.a': '— Futuro residente, invitado VIP',
+        'Dos de las ocho residencias ya están vendidas — hubo compradores que eligieron Coastline antes del primer anuncio público.',
+      'about.t1.a': '2 de 8 vendidas · 1 reservada',
       'about.t2.q':
-        '“La atención al detalle y la escala boutique marcaron la diferencia. Así debería sentirse vivir en la costa.”',
-      'about.t2.a': '— Reseña de consultor de diseño',
+        'Un edificio boutique de solo ocho hogares en tres pisos, a una cuadra de la arena en el Km 5 Vía Data.',
+      'about.t2.a': '8 residencias · 3 pisos · 1 cuadra a la playa',
 
       'contact.eyebrow': 'Contacto',
       'contact.title': 'Regístrate para Acceso VIP',
@@ -389,10 +389,21 @@
     document.dispatchEvent(new CustomEvent('cc:langchange', { detail: { lang } }));
   }
 
+  /* Lightweight conversion tracking — forwards to Vercel Web Analytics when the
+     dashboard toggle is on (window.va queue is defined in index.html <head>). */
+  function track(name, data) {
+    try {
+      window.va && window.va('event', { name: name, data: data || {} });
+    } catch (_) {
+      /* analytics must never break the page */
+    }
+  }
+
   /* Public API for the experience layer (js/effects.js, js/experience.js, …) */
   window.CC = {
     t,
     applyLanguage,
+    track,
     get lang() {
       return lang;
     },
@@ -400,6 +411,18 @@
       if (window.CC_FLOORPLAN) window.CC_FLOORPLAN.open(unitId);
     },
   };
+
+  /* Delegated conversion-event listeners (WhatsApp, plan PDFs, 3D fullscreen) */
+  document.addEventListener('click', (e) => {
+    const el = e.target && e.target.closest ? e.target.closest('a, button') : null;
+    if (!el) return;
+    const href = el.getAttribute && (el.getAttribute('href') || '');
+    const section = el.closest('section[id], footer, header');
+    const source = section ? section.id || section.tagName.toLowerCase() : 'page';
+    if (href && href.indexOf('wa.me') !== -1) track('whatsapp_click', { source });
+    else if (href && /\.pdf(\?|#|$)/i.test(href)) track('plan_download', { file: href.split('/').pop(), source });
+    else if (el.id === 'exp-fullscreen-btn') track('model3d_open', {});
+  });
 
   /* ========================================================================
      Hero reveal (no full-screen preloader — it delayed LCP in PageSpeed)
@@ -909,7 +932,6 @@
         return;
       }
 
-      // Payload ready for backend / Formspree / Netlify Forms
       const payload = {
         name,
         email,
@@ -921,7 +943,7 @@
         timestamp: new Date().toISOString(),
       };
 
-      // Store locally for demo; replace with fetch() to your endpoint
+      // Belt-and-braces local copy (readable via localStorage['cc-leads'])
       try {
         const existing = JSON.parse(localStorage.getItem('cc-leads') || '[]');
         existing.push(payload);
@@ -930,7 +952,42 @@
         /* ignore quota */
       }
 
-      console.info('[Coastline Condos] VIP lead captured:', payload);
+      /* Lead delivery — FormSubmit.co (no account needed).
+         ⚠ The FIRST submission emails an activation link to the address below;
+         click it once and every later lead arrives as a formatted email.
+         ⚠ AT LAUNCH: swap to the team inbox (e.g. hello@coastlinecondos.ec once
+         that mailbox exists), or use your FormSubmit alias hash to hide the address. */
+      const LEAD_ENDPOINT = 'https://formsubmit.co/ajax/jquinonez2980@gmail.com';
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn && (submitBtn.disabled = true);
+
+      fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(
+          Object.assign(
+            {
+              _subject: 'New VIP registration — Coastline Condos',
+              _template: 'table',
+              _captcha: 'false',
+            },
+            payload
+          )
+        ),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          track('lead_submit', { unit: payload.unit, lang: payload.lang, delivered: true });
+        })
+        .catch((err) => {
+          // Lead is still in localStorage; surface in analytics so it isn't silent
+          console.warn('[Coastline Condos] Lead email delivery failed:', err);
+          track('lead_submit', { unit: payload.unit, lang: payload.lang, delivered: false });
+        })
+        .finally(() => {
+          submitBtn && (submitBtn.disabled = false);
+        });
 
       form.reset();
       success && success.removeAttribute('hidden');

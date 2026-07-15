@@ -1,0 +1,8 @@
+# Coastline Condos — Playas, Ecuador
+# The vercel.app preview is kept out of the index via an X-Robots-Tag header
+# (see vercel.json); this file governs the launched domain.
+User-agent: *
+Allow: /
+Disallow: /3d-model/
+
+Sitemap: https://coastlinecondos.ec/sitemap.xml

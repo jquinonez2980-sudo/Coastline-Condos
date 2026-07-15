@@ -230,6 +230,7 @@
           </div>
           <button type="button" class="quiz-back" id="quiz-restart">↻ ${t('quiz.restart')}</button>
         `;
+        if (window.CC && window.CC.track) window.CC.track('quiz_result', { unit: unit.id });
         $('#quiz-view', body).addEventListener('click', () => {
           close();
           setTimeout(() => {
