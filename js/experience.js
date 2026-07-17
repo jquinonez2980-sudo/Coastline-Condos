@@ -356,6 +356,8 @@
             ? `${name} · ${t('cfg.l' + state.level)} · paleta ${t(pal.nameKey)} con pisos de ${t(fl.nameKey)} — ${view}.`
             : `${name} · ${t('cfg.l' + state.level)} · ${t(pal.nameKey)} palette with ${t(fl.nameKey)} floors — ${view}.`;
       }
+      // Live-sync finishes into the 3D engine (updates an active walkthrough too)
+      if (window.CC_MODEL3D) window.CC_MODEL3D.setFinishes(state.palette, state.flooring);
     }
 
     buildUnitButtons();
@@ -382,6 +384,16 @@
       if (sentNote) sentNote.setAttribute('hidden', '');
       apply();
     });
+
+    // "Walk through with these finishes" — opens the fullscreen 3D walkthrough
+    const walk3d = $('#cfg-walk3d');
+    if (walk3d) {
+      walk3d.addEventListener('click', () => {
+        if (!window.CC_MODEL3D) return;
+        if (window.CC && window.CC.track) window.CC.track('design_walkthrough', { unit: state.unit, palette: state.palette, flooring: state.flooring });
+        window.CC_MODEL3D.walkthrough(state.unit, { palette: state.palette, flooring: state.flooring });
+      });
+    }
 
     const send = $('#cfg-send');
     if (send) {

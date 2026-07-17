@@ -47,6 +47,11 @@
   <!-- PWA -->
   <link rel="manifest" href="manifest.webmanifest" />
   <meta name="mobile-web-app-capable" content="yes" />
+
+  <!-- three.js served from /vendor (no CDN dependency) for the unified 3D engine -->
+  <script type="importmap">
+    { "imports": { "three": "/vendor/three/three.module.js", "three/addons/": "/vendor/three/addons/" } }
+  </script>
   <!-- LCP: responsive hero poster (WebP preferred) -->
   <link
     rel="preload"
@@ -502,28 +507,26 @@
               <button type="button" class="exp-floor-btn" data-floor="1" aria-pressed="false" data-i18n="exp.f1">Ground · 101–103</button>
             </div>
 
-            <div class="exp-daynight" role="group" aria-label="Lighting">
-              <button type="button" id="exp-day" class="exp-dn-btn is-active" data-i18n="exp.day">Day</button>
-              <button type="button" id="exp-night" class="exp-dn-btn" data-i18n="exp.night">Night</button>
-            </div>
-
             <div class="exp-info glass-card p-6" aria-live="polite">
               <h3 id="exp-info-title" class="font-display text-2xl mb-2">&nbsp;</h3>
               <p id="exp-info-desc" class="text-sm opacity-75 leading-relaxed mb-3" data-i18n="exp.select">Select a floor or suite</p>
               <div id="exp-unit-list" class="exp-unit-list"></div>
-              <button type="button" id="exp-info-cta" class="unit-cta mt-3" data-i18n="exp.viewplan" hidden>Explore Plan</button>
+              <div class="exp-cta-row">
+                <button type="button" id="exp-walk-cta" class="btn-primary exp-walk-btn" data-i18n="exp.walkin" hidden>Walk inside in 3D</button>
+                <button type="button" id="exp-info-cta" class="unit-cta" data-i18n="exp.viewplan" hidden>Explore Plan</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Fullscreen 3D model viewer (photo-matched, plan-dimensioned reconstruction) -->
+    <!-- Fullscreen 3D viewer — the SAME engine instance is portaled in here,
+         so the enlarged view is literally the inline view, bigger -->
     <div id="model3d-viewer" class="model3d-viewer hidden" role="dialog" aria-modal="true" aria-label="Full 3D model of Coastline Condos" hidden>
       <button type="button" id="model3d-close" class="icon-btn model3d-close" aria-label="Close 3D model">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
-      <iframe id="model3d-frame" class="model3d-frame" title="Coastline Condos — full 3D model" loading="lazy"></iframe>
     </div>
 
     <!-- ========== AMENITIES ========== -->
@@ -902,7 +905,10 @@
             <div class="cfg-summary glass-card p-5">
               <p class="section-eyebrow" style="margin-bottom:.4rem" data-i18n="cfg.summary">Your concept</p>
               <p id="cfg-summary-text" class="text-sm leading-relaxed"></p>
-              <button type="button" id="cfg-send" class="btn-primary mt-4" data-i18n="cfg.cta">Send My Design to the Team</button>
+              <div class="cfg-cta-row">
+                <button type="button" id="cfg-walk3d" class="btn-primary mt-4" data-i18n="cfg.walk3d">Walk through with these finishes</button>
+                <button type="button" id="cfg-send" class="btn-outline-dark mt-4" data-i18n="cfg.cta">Send My Design to the Team</button>
+              </div>
               <p id="cfg-sent" class="form-success" hidden role="status" data-i18n="cfg.sent">Design added to your VIP registration below — finish and submit ↓</p>
               <p class="text-xs opacity-60 mt-3" data-i18n="cfg.note">Selections are conceptual and help our team personalize your VIP preview.</p>
             </div>
@@ -1204,7 +1210,7 @@
         'js/min/floorplan.js',
         'js/min/effects.js',
         'js/min/experience.js',
-        'js/min/building3d.js'
+        'js/min/explorer3d.js'
       ];
       var loaded = false;
       function loadSecondary() {

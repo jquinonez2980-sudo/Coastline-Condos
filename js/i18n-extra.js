@@ -17,8 +17,10 @@ window.CC_I18N_EXTRA = {
     /* 3D Explorer */
     'exp.eyebrow': 'Interactive 3D Experience',
     'exp.title': 'Explore the building, suite by suite',
-    'exp.sub': 'Rotate the residence in real time, select a level, click a suite, and switch day/night lighting — mapped to the real Coastline inventory.',
+    'exp.sub': 'Orbit the real, plan-accurate reconstruction, click any suite, change the light of day — then step inside and walk through your future home.',
     'exp.hint': 'Drag to rotate · Click a suite',
+    'exp.hint3d': 'Drag to orbit · Scroll to zoom · Click a suite',
+    'exp.walkin': 'Walk inside in 3D',
     'exp.f1': 'Ground · 101–103',
     'exp.f2': 'Level 2 · 201–203',
     'exp.f3': 'Level 3 · 301 · 302',
@@ -34,7 +36,8 @@ window.CC_I18N_EXTRA = {
     /* Design studio / configurator */
     'cfg.eyebrow': 'Design Studio',
     'cfg.title': 'Craft your residence',
-    'cfg.sub': 'Play interior designer — choose your palette, flooring, and level, and watch your future home respond in real time.',
+    'cfg.sub': 'Choose your palette and flooring, then walk through your residence in 3D wearing exactly those finishes — a design studio you can step inside.',
+    'cfg.walk3d': 'Walk through with these finishes',
     'cfg.unit': 'Residence',
     'cfg.palette': 'Interior palette',
     'cfg.flooring': 'Flooring',
@@ -100,8 +103,10 @@ window.CC_I18N_EXTRA = {
 
     'exp.eyebrow': 'Experiencia 3D Interactiva',
     'exp.title': 'Explora el edificio, suite por suite',
-    'exp.sub': 'Gira la residencia en tiempo real, selecciona un nivel, toca una suite y cambia día/noche — mapeado al inventario real de Coastline.',
+    'exp.sub': 'Orbita la reconstrucción fiel a los planos, toca cualquier suite, cambia la luz del día — y luego entra y recorre tu futuro hogar.',
     'exp.hint': 'Arrastra para rotar · Toca una suite',
+    'exp.hint3d': 'Arrastra para orbitar · Desliza para acercar · Toca una suite',
+    'exp.walkin': 'Recorrer en 3D',
     'exp.f1': 'Planta baja · 101–103',
     'exp.f2': 'Nivel 2 · 201–203',
     'exp.f3': 'Nivel 3 · 301 · 302',
@@ -116,7 +121,8 @@ window.CC_I18N_EXTRA = {
 
     'cfg.eyebrow': 'Estudio de Diseño',
     'cfg.title': 'Diseña tu residencia',
-    'cfg.sub': 'Juega a ser diseñador — elige tu paleta, pisos y nivel, y mira cómo tu futuro hogar responde en tiempo real.',
+    'cfg.sub': 'Elige tu paleta y tus pisos, y luego recorre tu residencia en 3D con esos acabados exactos — un estudio de diseño al que puedes entrar.',
+    'cfg.walk3d': 'Recorrer con estos acabados',
     'cfg.unit': 'Residencia',
     'cfg.palette': 'Paleta interior',
     'cfg.flooring': 'Pisos',
