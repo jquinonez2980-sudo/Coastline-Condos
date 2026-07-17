@@ -718,19 +718,11 @@ export function createCoastline3D(container, opts = {}) {
     const miniRail = barRail(1.5, 0.98, 4);
     miniRail.position.set(x0 + 2.3, FLOOR_H * 2 + 0.12, 1.55);
     g.add(miniRail);
+    // top of the end unit is a plain parapet slab — no roof terrace here
+    // (the photos show a clean roofline on the right end)
     const plate = box(w + 1.1, 0.42, 6.4, mat.white);
     plate.position.set(cx + 0.15, BUILD_H + 0.33, -6.4 / 2 + 1.15);
     g.add(plate);
-    const roofDeck = box(w + 0.7, 0.06, 6.0, mat.plank);
-    roofDeck.position.set(cx + 0.15, BUILD_H + 0.48 + 0.03, -6.0 / 2 + 1.0);
-    g.add(roofDeck);
-    const roofRailF = barRail(w + 0.9, 0.95, 4);
-    roofRailF.position.set(cx + 0.15, BUILD_H + 0.48, 1.05);
-    g.add(roofRailF);
-    const roofRailR = barRail(6.2, 0.95, 4);
-    roofRailR.rotation.y = -Math.PI / 2;
-    roofRailR.position.set(x1 + 0.68, BUILD_H + 0.48, -6.4 / 2 + 1.15);
-    g.add(roofRailR);
     const rear = box(w, 0.5, DEPTH - 5.4, mat.tan);
     rear.position.set(cx, BUILD_H + 0.25, -(DEPTH - 5.4) / 2 - 5.4);
     g.add(rear);
@@ -1757,7 +1749,14 @@ export function createCoastline3D(container, opts = {}) {
       group.add(ceil);
 
       colliders = [];
-      bounds = { x0: ix0 + 0.25, x1: ix1 - 0.25, z0: iz0 + 0.25, z1: terraces.length ? Math.max(...terraces.map((t) => t.z1)) - 0.3 : iz1 - 0.25 };
+      bounds = {
+        x0: ix0 + 0.25, x1: ix1 - 0.25, z0: iz0 + 0.25,
+        z1: terraces.length ? Math.max(...terraces.map((t) => t.z1)) - 0.3 : iz1 - 0.25,
+        // past the front glass you may only stand where a terrace deck exists
+        frontZ: iz1,
+        tx0: terraces.length ? Math.min(...terraces.map((t) => t.x0)) + 0.25 : null,
+        tx1: terraces.length ? Math.max(...terraces.map((t) => t.x1)) - 0.25 : null,
+      };
 
       const yBase = floorY + 0.12;
 
@@ -1771,7 +1770,7 @@ export function createCoastline3D(container, opts = {}) {
         wallMesh.position.set(horizontal ? (x0 + x1) / 2 : x0, yBase + h / 2, horizontal ? z0 : (z0 + z1) / 2);
         wallMesh.castShadow = wallMesh.receiveShadow = true;
         group.add(wallMesh);
-        const t = WALL_T / 2 + 0.18;
+        const t = WALL_T / 2 + 0.06;
         colliders.push(horizontal
           ? { x0: x0, z0: z0 - t, x1: x1, z1: z0 + t }
           : { x0: x0 - t, z0: z0, x1: x0 + t, z1: z1 });
@@ -1805,7 +1804,7 @@ export function createCoastline3D(container, opts = {}) {
       addWall(ix1, iz0, ix1, iz1);
       // front wall assembly: CLEAR sliding glass with a real open leaf you walk
       // through — panes get colliders, the open gap does not
-      const t2 = WALL_T / 2 + 0.16;
+      const t2 = WALL_T / 2 + 0.06;
       function frontGlassAssembly(x0, x1) {
         const span = x1 - x0;
         if (span < 0.9) { addWall(x0, iz1, x1, iz1); return; }
@@ -1854,11 +1853,25 @@ export function createCoastline3D(container, opts = {}) {
       inner.forEach((r) => {
         // right edge
         if (Math.abs(r.x1 - ix1) > 0.05) {
-          addWallWithDoor(r.x1, Math.max(r.z0, iz0), r.x1, Math.min(r.z1, iz1), r.kind === 'hall' || r.kind === 'living' ? 1.15 : 0.85);
+          addWallWithDoor(r.x1, Math.max(r.z0, iz0), r.x1, Math.min(r.z1, iz1), r.kind === 'hall' || r.kind === 'living' ? 1.5 : 1.0);
         }
-        // bottom edge (toward front)
+        // bottom edge (toward front): build wall only where another room lies
+        // beyond it — sala/dormitorios flow straight to the terrace glass
+        // instead of facing a blank partition (plan-true open plan)
         if (Math.abs(r.z1 - iz1) > 0.05) {
-          addWallWithDoor(Math.max(r.x0, ix0), r.z1, Math.min(r.x1, ix1), r.z1, r.kind === 'hall' || r.kind === 'living' ? 1.2 : 0.9);
+          const ex0 = Math.max(r.x0, ix0), ex1 = Math.min(r.x1, ix1);
+          const openFlow = r.kind === 'living' || r.kind === 'bed' || r.kind === 'hall';
+          if (!openFlow) {
+            addWallWithDoor(ex0, r.z1, ex1, r.z1, 1.0);
+          } else {
+            inner
+              .filter((o) => o !== r && Math.abs(o.z0 - r.z1) < 0.05 && o.x1 > ex0 + 0.05 && o.x0 < ex1 - 0.05)
+              .forEach((o) => {
+                const sx0 = Math.max(o.x0, ex0), sx1 = Math.min(o.x1, ex1);
+                if (sx1 - sx0 < 0.2) return;
+                addWallWithDoor(sx0, r.z1, sx1, r.z1, r.kind === 'bed' ? 1.0 : 1.5);
+              });
+          }
         }
       });
 
@@ -1918,10 +1931,15 @@ export function createCoastline3D(container, opts = {}) {
           rug.rotation.x = -Math.PI / 2;
           rug.position.set(cx, yBase + 0.01, r.z0 + 1.5);
           group.add(rug);
-          // media wall on the LEFT side — keeps the terrace glass wide open
+          // media wall on the side wall AWAY from the open sightline to the
+          // glass, so the spawn view never starts nose-to-screen
           if (w > 3.1 && d > 2.6) {
             const tvw = Math.min(1.7, d - 1.2);
-            place(fTV(tvw), r.x0 + 0.34, cz, Math.PI / 2, { x0: r.x0 + 0.02, z0: cz - tvw / 2 - 0.1, x1: r.x0 + 0.7, z1: cz + tvw / 2 + 0.1 });
+            if (frontOpenX(r, inner) < cx) {
+              place(fTV(tvw), r.x1 - 0.34, cz, -Math.PI / 2, { x0: r.x1 - 0.7, z0: cz - tvw / 2 - 0.1, x1: r.x1 - 0.02, z1: cz + tvw / 2 + 0.1 });
+            } else {
+              place(fTV(tvw), r.x0 + 0.34, cz, Math.PI / 2, { x0: r.x0 + 0.02, z0: cz - tvw / 2 - 0.1, x1: r.x0 + 0.7, z1: cz + tvw / 2 + 0.1 });
+            }
           }
           const pl = fPlant(); place(pl, r.x1 - 0.4, r.z0 + 0.4);
         } else if (r.kind === 'kitchen') {
@@ -1959,13 +1977,53 @@ export function createCoastline3D(container, opts = {}) {
 
       applyLight(LIGHT_PRESETS[currentLight]);
       group.visible = true;
-      return { spawn: spawnPoint(rooms), floorY: yBase, unit: u };
+      return { spawn: resolveSpawn(spawnPoint(rooms)), floorY: yBase, unit: u };
+    }
+
+    // x of the widest opening in a room's front edge — an open-plan span to
+    // the glass if one exists, else its widest doorway, else room center
+    function frontOpenX(room, innerRooms) {
+      const covered = innerRooms
+        .filter((o) => o !== room && Math.abs(o.z0 - room.z1) < 0.05 && o.x1 > room.x0 + 0.05 && o.x0 < room.x1 - 0.05)
+        .map((o) => [Math.max(o.x0, room.x0), Math.min(o.x1, room.x1)])
+        .sort((a, b) => a[0] - b[0]);
+      let x = (room.x0 + room.x1) / 2;
+      let best = 0;
+      let cursor = room.x0;
+      for (const [c0, c1] of covered) {
+        if (c0 - cursor > best) { best = c0 - cursor; x = (cursor + c0) / 2; }
+        cursor = Math.max(cursor, c1);
+      }
+      if (room.x1 - cursor > best) { best = room.x1 - cursor; x = (cursor + room.x1) / 2; }
+      if (best < 0.8) {
+        let bw = 0;
+        covered.forEach(([c0, c1]) => { if (c1 - c0 > bw) { bw = c1 - c0; x = (c0 + c1) / 2; } });
+      }
+      return x;
     }
 
     function spawnPoint(rooms) {
-      // spawn mid-living-room, clear of furniture, facing the terrace
+      // spawn in the living room aimed at the widest opening in its front
+      // edge, so the first view reads as depth, never a wall in the face
+      const inner2 = rooms.filter((r) => r.kind !== 'terrace');
       const living = rooms.find((r) => r.id === 'living') || rooms.find((r) => r.kind === 'living') || rooms.find((r) => r.id === 'entry') || rooms[0];
-      return { x: (living.x0 + living.x1) / 2 + 0.4, z: (living.z0 + living.z1) / 2 + 0.35 };
+      const depth = living.z1 - living.z0;
+      return { x: frontOpenX(living, inner2), z: living.z0 + Math.min(1.55, depth * 0.45) };
+    }
+
+    function resolveSpawn(p) {
+      // nudge the spawn out of any furniture/wall collision envelope
+      const R2 = 0.32;
+      for (let i = 0; i < 3; i++) {
+        const c = colliders.find((cc) => p.x > cc.x0 - R2 && p.x < cc.x1 + R2 && p.z > cc.z0 - R2 && p.z < cc.z1 + R2);
+        if (!c) break;
+        const dxL = p.x - (c.x0 - R2), dxR = (c.x1 + R2) - p.x;
+        const dzL = p.z - (c.z0 - R2), dzR = (c.z1 + R2) - p.z;
+        const m = Math.min(dxL, dxR, dzL, dzR);
+        if (m === dxL) p.x = c.x0 - R2; else if (m === dxR) p.x = c.x1 + R2;
+        else if (m === dzL) p.z = c.z0 - R2; else p.z = c.z1 + R2;
+      }
+      return p;
     }
 
     function clear() {
@@ -2015,6 +2073,7 @@ export function createCoastline3D(container, opts = {}) {
     let ox = nx, oz = nz;
     for (const c of interior.colliders) {
       if (inside(ox, oz, c)) {
+        if (inside(px, pz, c)) continue; // already overlapping — let them walk out
         // try axis-separated slide
         if (!inside(ox, pz, c)) { oz = pz; }
         else if (!inside(px, oz, c)) { ox = px; }
@@ -2025,6 +2084,11 @@ export function createCoastline3D(container, opts = {}) {
     if (b) {
       ox = THREE.MathUtils.clamp(ox, b.x0, b.x1);
       oz = THREE.MathUtils.clamp(oz, b.z0, b.z1);
+      // don't step past the front glass line where there's no terrace deck
+      if (b.tx0 != null && oz > b.frontZ && (ox < b.tx0 || ox > b.tx1)) {
+        if (pz <= b.frontZ) oz = pz;
+        else ox = THREE.MathUtils.clamp(ox, b.tx0, b.tx1);
+      }
     } else {
       ox = THREE.MathUtils.clamp(ox, -13, 37);
       oz = THREE.MathUtils.clamp(oz, -13, SITE.wallZ + 9);
@@ -2045,6 +2109,8 @@ export function createCoastline3D(container, opts = {}) {
     else camera.position.set(14, EYE, 11);
     walk.yaw = mode === 'unit' ? Math.PI : 0; // units: face the ocean/terrace (+z → yaw π)
     walk.pitch = 0.0;
+    camera.fov = mode === 'unit' ? 64 : 56; // roomier first-person view
+    camera.updateProjectionMatrix();
     animT = null;
     hud.setWalkUI(true, mode);
     emit('walk', { on: true, mode });
@@ -2053,6 +2119,8 @@ export function createCoastline3D(container, opts = {}) {
     if (!walk.on) return;
     walk.on = false;
     controls.enabled = true;
+    camera.fov = 46;
+    camera.updateProjectionMatrix();
     if (walk.savedPos) {
       camera.position.copy(walk.savedPos);
       controls.target.copy(walk.savedTarget);
