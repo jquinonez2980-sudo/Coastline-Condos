@@ -1573,8 +1573,11 @@ body {
 }
 
 /* ---------- Hero ocean canvas + quiz link ---------- */
+/* Below the poster/video (z-index 0/1) so the real photo shows immediately
+   instead of being painted over by the animated canvas while the hero video
+   is still deferred (loads after window `load` + idle to protect LCP). */
 #ocean-canvas {
-  z-index: 1;
+  z-index: -1;
   pointer-events: none;
 }
 .quiz-link {

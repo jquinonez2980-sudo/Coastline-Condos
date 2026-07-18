@@ -1008,7 +1008,7 @@
       /* Lead delivery — FormSubmit.co (no account needed).
          ⚠ The FIRST submission emails an activation link to the address below;
          click it once and every later lead arrives as a formatted email.
-         ⚠ AT LAUNCH: swap to the team inbox (e.g. hello@coastlinecondos.ec once
+         ⚠ AT LAUNCH: swap to the team inbox (e.g. info@coastlinecondos.vip once
          that mailbox exists), or use your FormSubmit alias hash to hide the address. */
       const LEAD_ENDPOINT = 'https://formsubmit.co/ajax/jquinonez2980@gmail.com';
 
