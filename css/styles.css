@@ -471,11 +471,17 @@ html.dark .btn-ghost:hover {
   min-height: 100svh;
 }
 .hero-fallback {
-  background:
-    linear-gradient(160deg, #1E4E4E 0%, #2A6868 40%, #2F7070 70%, #1E4E4E 100%),
-    radial-gradient(ellipse at 30% 80%, rgba(111, 179, 176, 0.25), transparent 50%),
-    radial-gradient(ellipse at 70% 20%, rgba(201, 113, 79, 0.15), transparent 40%);
+  /* The real photo as a plain CSS background — no <picture>/srcset
+     negotiation to lose a race against the deferred hero video. The
+     <picture class="hero-poster"> element still layers on top for a
+     sharper, responsive image once it loads; this is the guaranteed floor
+     so a slow/failed picture load never falls back to a flat gradient. */
+  background-color: #1E4E4E;
+  background-image:
+    linear-gradient(160deg, rgba(30,78,78,0.25) 0%, rgba(42,104,104,0.1) 40%, rgba(47,112,112,0.1) 70%, rgba(30,78,78,0.3) 100%),
+    url('../assets/images/hero-poster-w1200.jpg');
   background-size: cover;
+  background-position: center;
   z-index: 0;
 }
 .hero-media video {
