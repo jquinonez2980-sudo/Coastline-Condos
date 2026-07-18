@@ -672,7 +672,13 @@
 
     // Phones get the compressed ~0.9MB clip; desktop the full one. Both start
     // only after load + idle, so LCP stays the poster image (PSI-safe).
-    const videoSrc = isMobile ? 'assets/videos/ocean-hero-mobile.mp4' : 'assets/videos/ocean-hero.mp4';
+    // ?v= busts /assets/(.*) being served Cache-Control: immutable, max-age=1y
+    // (vercel.json) — bump this whenever the video file content changes, since
+    // the filename itself doesn't, and immutable means browsers never revalidate.
+    const HERO_VIDEO_VERSION = 'v2';
+    const videoSrc =
+      (isMobile ? 'assets/videos/ocean-hero-mobile.mp4' : 'assets/videos/ocean-hero.mp4') +
+      '?v=' + HERO_VIDEO_VERSION;
 
     const startVideo = () => {
       if (video.getAttribute('data-src-set') === '1') return;
