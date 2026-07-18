@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 Disallow: /3d-model/
 
-Sitemap: https://coastlinecondos.ec/sitemap.xml
+Sitemap: https://coastlinecondos.vip/sitemap.xml
