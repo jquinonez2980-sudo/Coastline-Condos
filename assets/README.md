@@ -36,13 +36,18 @@ Keep filenames the same (or update paths in `index.html`) for a drop-in swap.
 | `images/playas-dining.jpg` | Local dining / ceviche | Coastal dining in Playas Ecuador |
 | `images/og-hero.jpg` | 1200×630 social share | Open Graph / Twitter card |
 
-## Unit renderings
+## Unit photos
 
 | Path | Unit |
 |------|------|
-| `images/unit-pacific-2br.jpg` | The Pacific — 2BR |
-| `images/unit-horizon-2br.jpg` | The Horizon — 2BR corner |
-| `images/unit-azure-3br.jpg` | The Azure — 3BR flagship |
+| `images/unit-101.jpg` | 101 — 2BR, Planta Baja |
+| `images/unit-102.jpg` | 102 — 2BR, Planta Baja |
+| `images/unit-103.jpg` | 103 — 3BR, Planta Baja |
+| `images/unit-201.jpg` | 201 — 2BR, 1er Piso Alto |
+| `images/unit-202.jpg` | 202 — 2BR, 1er Piso Alto |
+| `images/unit-203.jpg` | 203 — 3BR, 1er Piso Alto |
+| `images/unit-301.jpg` | 301 — 3BR, 2do Piso Alto |
+| `images/unit-302.jpg` | 302 — 4BR flagship, 2do Piso Alto |
 
 ## Gallery (masonry)
 

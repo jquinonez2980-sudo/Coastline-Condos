@@ -208,7 +208,7 @@
       price: 90000,
       status: 'available',
       layout: '2br-left',
-      image: 'assets/images/unit-pacific-2br.jpg',
+      image: 'assets/images/unit-101.jpg',
       position: 'left',
     },
     {
@@ -222,7 +222,7 @@
       price: 90000,
       status: 'available',
       layout: '2br-center',
-      image: 'assets/images/unit-horizon-2br.jpg',
+      image: 'assets/images/unit-102.jpg',
       position: 'center',
     },
     {
@@ -236,7 +236,7 @@
       price: 120000,
       status: 'available',
       layout: '3br-right-pb',
-      image: 'assets/images/unit-azure-3br.jpg',
+      image: 'assets/images/unit-103.jpg',
       position: 'right',
     },
     {
@@ -250,7 +250,7 @@
       price: 90000,
       status: 'available',
       layout: '2br-left',
-      image: 'assets/images/unit-pacific-2br.jpg',
+      image: 'assets/images/unit-201.jpg',
       position: 'left',
     },
     {
@@ -264,7 +264,7 @@
       price: 90000,
       status: 'available',
       layout: '2br-center',
-      image: 'assets/images/unit-horizon-2br.jpg',
+      image: 'assets/images/unit-202.jpg',
       position: 'center',
     },
     {
@@ -278,7 +278,7 @@
       price: 130000,
       status: 'conditional',
       layout: '3br-right-1',
-      image: 'assets/images/unit-azure-3br.jpg',
+      image: 'assets/images/unit-203.jpg',
       position: 'right',
     },
     {
@@ -292,7 +292,7 @@
       price: 130000,
       status: 'sold',
       layout: '3br-301',
-      image: 'assets/images/unit-azure-3br.jpg',
+      image: 'assets/images/unit-301.jpg',
       position: 'left',
     },
     {
@@ -306,7 +306,7 @@
       price: 160000,
       status: 'sold',
       layout: '4br-302',
-      image: 'assets/images/unit-horizon-2br.jpg',
+      image: 'assets/images/unit-302.jpg',
       position: 'right',
     },
   ];

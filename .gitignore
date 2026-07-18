@@ -13,6 +13,7 @@ Thumbs.db
 /layout diagram/
 /website_handoff/
 /pictures/
+/suites/
 *.mov
 
 # Keep site-facing media (assets/) in git so Vercel Git deploys include them

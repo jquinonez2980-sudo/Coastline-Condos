@@ -26,9 +26,14 @@ TARGETS = [
     "gallery-04.jpg",
     "gallery-05.jpg",
     "gallery-06.jpg",
-    "unit-azure-3br.jpg",
-    "unit-horizon-2br.jpg",
-    "unit-pacific-2br.jpg",
+    "unit-101.jpg",
+    "unit-102.jpg",
+    "unit-103.jpg",
+    "unit-201.jpg",
+    "unit-202.jpg",
+    "unit-203.jpg",
+    "unit-301.jpg",
+    "unit-302.jpg",
 ]
 
 # Widths for responsive srcset (skip widths larger than source)
