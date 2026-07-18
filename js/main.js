@@ -105,10 +105,10 @@
       'tour.eyebrow': 'Virtual Experience',
       'tour.title': 'Experience the View',
       'tour.sub':
-        'Step inside with a 360° walkthrough. Feel the light, the layout, and the horizon — before you ever set foot in Playas.',
-      'tour.f1': '360° unit walkthroughs (Matterport-ready)',
-      'tour.f2': 'Drone views of the coastline',
-      'tour.f3': 'Day-to-night ambient renderings',
+        'Real drone footage over the residences and the Playas shoreline. Feel the light, the surf, and the horizon — before you ever set foot in Playas.',
+      'tour.f1': 'Drone flyover of the residences, filmed on site',
+      'tour.f2': 'The Pacific surf, one block from your terrace',
+      'tour.f3': 'Interactive 3D walkthroughs of every residence',
       'tour.cta': 'Request a Private Tour',
       'tour.placeholder': '360° / Matterport Tour',
       'tour.placeholderSub': 'Embed your interactive tour iframe here when ready',
@@ -269,10 +269,10 @@
       'tour.eyebrow': 'Experiencia Virtual',
       'tour.title': 'Vive la vista',
       'tour.sub':
-        'Entra con un recorrido 360°. Siente la luz, la distribución y el horizonte — antes de pisar Playas.',
-      'tour.f1': 'Recorridos 360° de unidades (listo para Matterport)',
-      'tour.f2': 'Vistas de dron de la costa',
-      'tour.f3': 'Renders día-noche',
+        'Metraje real de dron sobre las residencias y la costa de Playas. Siente la luz, el oleaje y el horizonte — antes de pisar Playas.',
+      'tour.f1': 'Sobrevuelo en dron de las residencias, filmado en sitio',
+      'tour.f2': 'El oleaje del Pacífico, a una cuadra de tu terraza',
+      'tour.f3': 'Recorridos 3D interactivos de cada residencia',
       'tour.cta': 'Solicitar tour privado',
       'tour.placeholder': 'Tour 360° / Matterport',
       'tour.placeholderSub': 'Inserta aquí el iframe de tu tour interactivo',
@@ -701,6 +701,48 @@
   }
 
   /* ========================================================================
+     Lazy section videos — real footage loops (tour drone, beach cam, model
+     residence reel). Each <video data-lazy-src> loads + plays only when it
+     nears the viewport and pauses off-screen. Save-data / 2G / reduced-motion
+     users keep the static posters and never fetch a byte of video.
+     ======================================================================== */
+  function initLazyVideos() {
+    const vids = $$('video[data-lazy-src]');
+    if (!vids.length) return;
+
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const saveData = !!(conn && conn.saveData);
+    const slowNet = !!(conn && /(^|-)2g/.test(conn.effectiveType || ''));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (saveData || slowNet || reduceMotion) return;
+
+    const start = (v) => {
+      if (!v.getAttribute('src')) {
+        v.src = v.dataset.lazySrc;
+        v.load();
+      }
+      const p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      vids.forEach(start);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const v = entry.target;
+          if (entry.isIntersecting) start(v);
+          else if (v.getAttribute('src')) v.pause();
+        });
+      },
+      { rootMargin: '260px 0px' }
+    );
+    vids.forEach((v) => io.observe(v));
+  }
+
+  /* ========================================================================
      Inventory grid + form unit select (data from js/inventory.js)
      ======================================================================== */
   function initInventoryUI() {
@@ -1028,6 +1070,7 @@
     initReveal();
     initParallax();
     initHeroVideo();
+    initLazyVideos();
     initInventoryUI();
     initGallery();
     initForm();

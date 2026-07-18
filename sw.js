@@ -4,7 +4,7 @@
  * same-origin GET requests (instant repeat visits + offline resilience).
  * Bump CACHE_VERSION whenever you ship changes, so clients refresh.
  */
-const CACHE_VERSION = 'coastline-v16-hero-cinematic';
+const CACHE_VERSION = 'coastline-v18-slow-reel';
 const SHELL = [
   './',
   './index.html',

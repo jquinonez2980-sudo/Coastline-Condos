@@ -24,6 +24,11 @@ Keep filenames the same (or update paths in `index.html`) for a drop-in swap.
 |------|--------|--------|
 | `videos/ocean-hero.mp4` | 1920×1080 or 4K, H.264, muted loop, 10–30s | Hero background. Compress with HandBrake/FFmpeg. Add WebM optional for size. |
 | Poster | `images/hero-poster.jpg` | First frame / still of hero (used before video loads) |
+| `videos/coastline-drone.mp4` | 848×480, 13s seamless loop, ~2 MB | "Experience the View" section — real drone orbit of the building + Playas surf (from clip c587fc94). Poster: `images/drone-poster.jpg/.webp`. |
+| `videos/playas-beach-cam.mp4` | 480×270, 8s loop, ~170 KB | "Live from Playas" webcam slot — real beach footage (from clip d0fa2261). Poster: `images/playas-cam-poster.jpg`. |
+| `videos/residence-reel.mp4` | 608×1080 portrait, 26s loop at 0.5x speed, ~3 MB | Design Studio — finished model residence walkthrough (from Drive clip IMG_1529.MOV, 2026-07-18): marble kitchen + green-stone island, cooktop, green-tile rain shower, dusk glass wall, sunset terrace. Slowed 2x with motion interpolation. Poster: `images/residence-reel-poster.jpg/.webp`. |
+
+All three section videos lazy-load via `video[data-lazy-src]` (js/main.js `initLazyVideos`) — they fetch and play only near the viewport, and never fetch on save-data / 2G / reduced-motion.
 
 ## Images — Lifestyle & Story
 

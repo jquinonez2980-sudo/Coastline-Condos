@@ -36,8 +36,9 @@ window.CC_I18N_EXTRA = {
     /* Design studio / configurator */
     'cfg.eyebrow': 'Design Studio',
     'cfg.title': 'Craft your residence',
-    'cfg.sub': 'Choose your palette and flooring, then walk through your residence in 3D wearing exactly those finishes — a design studio you can step inside.',
+    'cfg.sub': 'Filmed inside our finished model residence. Choose your palette and flooring, then walk through your own residence in 3D wearing exactly those finishes.',
     'cfg.walk3d': 'Walk through with these finishes',
+    'cfg.filmed': 'Filmed in the finished model residence',
     'cfg.unit': 'Residence',
     'cfg.palette': 'Interior palette',
     'cfg.flooring': 'Flooring',
@@ -82,11 +83,11 @@ window.CC_I18N_EXTRA = {
 
     /* Gallery live */
     'gal.live': 'Live from Playas',
-    'gal.livesub': 'Beach webcam — streaming soon. Meanwhile, follow daily construction stories on Instagram.',
+    'gal.livesub': 'Real footage from Playas beach, one block from Coastline. Live webcam coming soon — follow the day-to-day on Instagram.',
+    'gal.livetag': 'Playas · General Villamil · 1 block away',
 
     /* Tour */
-    'tour.drag': 'Drag to look around',
-    'tour.demo': 'Interactive demo panorama — your 360° tour embeds here',
+    'tour.real': 'Real drone footage — Coastline & the Playas shoreline',
 
     /* PWA */
     'pwa.install': 'Install App',
@@ -121,8 +122,9 @@ window.CC_I18N_EXTRA = {
 
     'cfg.eyebrow': 'Estudio de Diseño',
     'cfg.title': 'Diseña tu residencia',
-    'cfg.sub': 'Elige tu paleta y tus pisos, y luego recorre tu residencia en 3D con esos acabados exactos — un estudio de diseño al que puedes entrar.',
+    'cfg.sub': 'Filmado dentro de nuestra residencia modelo terminada. Elige tu paleta y tus pisos, y luego recorre tu propia residencia en 3D con esos acabados exactos.',
     'cfg.walk3d': 'Recorrer con estos acabados',
+    'cfg.filmed': 'Filmado en la residencia modelo terminada',
     'cfg.unit': 'Residencia',
     'cfg.palette': 'Paleta interior',
     'cfg.flooring': 'Pisos',
@@ -164,10 +166,10 @@ window.CC_I18N_EXTRA = {
     'chat.thinking': 'Buscando información…',
 
     'gal.live': 'En Vivo desde Playas',
-    'gal.livesub': 'Webcam de la playa — muy pronto. Mientras tanto, sigue el avance diario de obra en Instagram.',
+    'gal.livesub': 'Metraje real de la playa de Playas, a una cuadra de Coastline. Webcam en vivo muy pronto — sigue el día a día en Instagram.',
+    'gal.livetag': 'Playas · General Villamil · a 1 cuadra',
 
-    'tour.drag': 'Arrastra para mirar alrededor',
-    'tour.demo': 'Panorama demo interactivo — tu tour 360° se integra aquí',
+    'tour.real': 'Metraje real de dron — Coastline y la costa de Playas',
 
     'pwa.install': 'Instalar App',
   },
