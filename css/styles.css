@@ -431,13 +431,13 @@ body:has(.mobile-menu.is-open) .chat-widget {
   border-color: var(--champagne);
   transform: translateY(-2px);
 }
-section:not(.bg-ocean-950):not(#location):not(#about) .btn-outline,
-.section-pad:not(.bg-ocean-950) .btn-outline {
+section:not(.bg-ocean-950):not(#location):not(#about):not(.hero) .btn-outline,
+.section-pad:not(.bg-ocean-950):not(.hero) .btn-outline {
   color: var(--ocean-950);
   border-color: rgba(30, 78, 78, 0.25);
 }
-html.dark section:not(.bg-ocean-950):not(#location):not(#about) .btn-outline,
-html.dark .section-pad:not(.bg-ocean-950) .btn-outline {
+html.dark section:not(.bg-ocean-950):not(#location):not(#about):not(.hero) .btn-outline,
+html.dark .section-pad:not(.bg-ocean-950):not(.hero) .btn-outline {
   color: #fff;
   border-color: rgba(255, 255, 255, 0.35);
 }
@@ -2802,6 +2802,15 @@ html.dark .chat-input {
   max-width: 42rem;
   padding-left: max(1rem, env(safe-area-inset-left));
   padding-right: max(1rem, env(safe-area-inset-right));
+}
+.hero-copy h1,
+.hero-copy > p,
+.hero-copy .quiz-link {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 10px rgba(0, 0, 0, 0.6), 0 6px 28px rgba(0, 0, 0, 0.45);
+}
+.hero-copy .btn-outline {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
 }
 .hero-poster {
   z-index: 0;

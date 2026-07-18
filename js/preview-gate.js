@@ -26,13 +26,40 @@
       position: fixed; inset: 0; z-index: 99999;
       display: flex; align-items: center; justify-content: center;
       padding: 1.5rem;
+      overflow: hidden;
       background: linear-gradient(160deg, #0A2424 0%, #1E4E4E 55%, #2A6868 100%);
       color: #FBF6EC;
       font-family: Poppins, system-ui, sans-serif;
     }
+    #cc-preview-gate .gate-bg { position: absolute; inset: 0; }
+    #cc-preview-gate .gate-bg img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      opacity: 0; transition: opacity 1.4s ease;
+    }
+    #cc-preview-gate .gate-bg.is-loaded img { opacity: 1; }
+    @media (prefers-reduced-motion: no-preference) {
+      #cc-preview-gate .gate-bg.is-loaded img {
+        animation: cc-gate-drift 36s ease-in-out infinite alternate;
+      }
+    }
+    @keyframes cc-gate-drift {
+      from { transform: scale(1.04) translateY(0.6%); }
+      to   { transform: scale(1.12) translateY(-0.6%); }
+    }
+    /* Scrim keeps the card and copy readable over the rendering */
+    #cc-preview-gate .gate-bg::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,36,36,0.62) 0%, rgba(10,36,36,0.30) 45%, rgba(10,36,36,0.72) 100%);
+    }
+    #cc-preview-gate .gate-credit {
+      position: absolute; right: 1rem; bottom: 0.75rem; z-index: 1;
+      font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(251,246,236,0.55); margin: 0;
+    }
     #cc-preview-gate .gate-card {
+      position: relative; z-index: 1;
       width: 100%; max-width: 400px;
-      background: rgba(251, 246, 236, 0.06);
+      background: rgba(10, 36, 36, 0.52);
       border: 1px solid rgba(201, 113, 79, 0.35);
       border-radius: 1.25rem;
       padding: 2rem 1.75rem;
@@ -81,6 +108,13 @@
     gate.setAttribute('aria-modal', 'true');
     gate.setAttribute('aria-label', 'Client preview access');
     gate.innerHTML = `
+      <div class="gate-bg" aria-hidden="true">
+        <img
+          src="assets/images/coastline-rendering-w1920.jpg"
+          srcset="assets/images/coastline-rendering-w768.webp 768w, assets/images/coastline-rendering-w1200.webp 1200w, assets/images/coastline-rendering-w1920.webp 1920w"
+          sizes="100vw" alt="" decoding="async" fetchpriority="high" />
+      </div>
+      <p class="gate-credit">Architectural rendering &middot; Render arquitect&oacute;nico</p>
       <div class="gate-card">
         <p class="gate-eyebrow">Private client preview</p>
         <h1>Coastline Condos</h1>
@@ -94,6 +128,13 @@
       </div>
     `;
     document.body.appendChild(gate);
+
+    const bgImg = gate.querySelector('.gate-bg img');
+    if (bgImg) {
+      const reveal = () => bgImg.parentElement.classList.add('is-loaded');
+      if (bgImg.complete && bgImg.naturalWidth) reveal();
+      else bgImg.addEventListener('load', reveal, { once: true });
+    }
 
     const form = document.getElementById('cc-gate-form');
     const input = document.getElementById('cc-gate-pass');

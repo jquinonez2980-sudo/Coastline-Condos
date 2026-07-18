@@ -205,6 +205,8 @@
     <section id="home" class="hero relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Hero">
       <!-- Video / image background — poster first; video sources injected by main.js -->
       <div class="hero-media absolute inset-0" data-parallax="0.3">
+        <!-- Fallback gradient when media missing — must stay behind poster/video -->
+        <div class="hero-fallback absolute inset-0" aria-hidden="true"></div>
         <picture class="hero-poster absolute inset-0">
           <source
             type="image/webp"
@@ -215,7 +217,7 @@
             src="assets/images/hero-poster-w768.jpg"
             srcset="assets/images/hero-poster-w480.jpg 480w, assets/images/hero-poster-w768.jpg 768w, assets/images/hero-poster-w1200.jpg 1200w, assets/images/hero-poster-w1600.jpg 1600w"
             sizes="100vw"
-            alt="Aerial view of Coastline Condos with the coastal lagoon behind it, Playas, Ecuador"
+            alt="Coastline Condos residences with courtyard pool and palms at golden hour, Playas, Ecuador"
             width="1920"
             height="1080"
             class="absolute inset-0 w-full h-full object-cover"
@@ -229,11 +231,10 @@
           muted loop playsinline preload="none"
           aria-hidden="true"
         ></video>
-        <!-- Fallback gradient when media missing -->
-        <div class="hero-fallback absolute inset-0" aria-hidden="true"></div>
         <!-- Living ocean: procedural waves + light glitter (js/effects.js) — desktop / reduced on mobile -->
         <canvas id="ocean-canvas" class="absolute inset-0 w-full h-full" aria-hidden="true"></canvas>
-        <div class="absolute inset-0 bg-gradient-to-b from-ocean-950/70 via-ocean-950/40 to-ocean-950/80"></div>
+        <!-- z-[2]: must sit above the video (z-index:1) or the darkening never applies once video plays -->
+        <div class="absolute inset-0 z-[2] bg-gradient-to-b from-ocean-950/35 via-ocean-950/15 to-ocean-950/45"></div>
         <div class="absolute inset-0 hero-shimmer" aria-hidden="true"></div>
       </div>
 
@@ -682,6 +683,14 @@
 
         <!-- Masonry-style gallery — leads with the real Coastline pool courtyard, then Playas / Engabao photos (see assets/images/playas/CREDITS.md) -->
         <div class="gallery-masonry" id="gallery-grid">
+          <button type="button" class="gallery-item reveal" data-src="assets/images/coastline-rendering-w1920.jpg" data-alt="Architectural rendering of the completed Coastline Condos at sunset — pool courtyard, palms and lit balconies" aria-label="Open gallery image: architectural rendering of the completed building">
+            <span class="img-placeholder absolute inset-0" data-label="The vision (rendering)">
+              <picture>
+                <source type="image/webp" srcset="assets/images/coastline-rendering-w480.webp 480w, assets/images/coastline-rendering-w768.webp 768w, assets/images/coastline-rendering-w1200.webp 1200w" sizes="(max-width: 640px) 100vw, 33vw" />
+                <img src="assets/images/coastline-rendering-w480.jpg" srcset="assets/images/coastline-rendering-w480.jpg 480w, assets/images/coastline-rendering-w768.jpg 768w, assets/images/coastline-rendering-w1200.jpg 1200w" sizes="(max-width: 640px) 100vw, 33vw" width="1152" height="864" alt="Architectural rendering of the completed Coastline Condos at sunset — pool courtyard, palms and lit balconies" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+              </picture>
+            </span>
+          </button>
           <button type="button" class="gallery-item tall reveal" data-src="assets/images/gallery-pool.jpg" data-alt="Palm-framed pool courtyard at Coastline Condos at dusk — real photo" aria-label="Open gallery image: Coastline pool courtyard">
             <span class="img-placeholder absolute inset-0" data-label="Coastline pool">
               <img src="assets/images/gallery-pool-w480.jpg" srcset="assets/images/gallery-pool-w480.jpg 480w" sizes="(max-width: 640px) 100vw, 33vw" width="480" height="848" alt="Palm-framed pool courtyard at Coastline Condos at dusk — real photo of the finished amenity" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'" />
