@@ -683,15 +683,28 @@
     const startVideo = () => {
       if (video.getAttribute('data-src-set') === '1') return;
       video.setAttribute('data-src-set', '1');
-      video.preload = 'metadata';
+      video.preload = 'auto';
       video.src = videoSrc;
       video.load();
-      const p = video.play();
-      if (p && typeof p.catch === 'function') {
-        p.catch(() => {
-          if (video.readyState >= 2) markLoaded();
-        });
-      }
+
+      const play = () => {
+        const p = video.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch(() => {
+            if (video.readyState >= 2) markLoaded();
+          });
+        }
+      };
+      // Wait for enough buffer to play through smoothly (avoids a stuttery
+      // first second on a cold connection) — but don't wait forever.
+      let started = false;
+      const begin = () => {
+        if (started) return;
+        started = true;
+        play();
+      };
+      video.addEventListener('canplaythrough', begin, { once: true });
+      setTimeout(begin, 2500);
     };
 
     // Desktop: wait until after load + idle so FCP/LCP are not contended
